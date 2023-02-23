@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 세미콜론 절대 주의!!!!쓰지마시오 -->
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<select id="getList" resultType="org.zerock.domain.BoardVO">
+		select * from TBL_BOARD
+	</select>
+
+	<insert id="insert">
+		insert into TBL_BOARD(bno, title, content, writer)
+		values(seq_board.nextval,#{title},#{content},#{writer})
+	</insert>
+
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="bno" order="BEFORE"
+			resultType="long">
+			select seq_board.nextval from dual
+		</selectKey>
+		insert into TBL_BOARD(bno, title, content, writer)
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+
+	<select id="myselectKey" resultType="long">
+		select seq_board.nextval
+		from dual
+	</select>
+
+	<insert id="myInsert">
+		insert into TBL_BOARD(bno, title, content, writer)
+		values(#{bno},#{title},#{content},#{writer})
+	</insert>
+
+	<update id="update">
+		update TBL_BOARD set
+		TITLE=#{title},content=#{content},writer=#{writer},updatedate=sysdate
+		where bno=#{bno}
+	</update>
+
+	<delete id="delete">
+		delete from TBL_BOARD where bno=#{bno}
+	</delete>
+
+	<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from TBL_BOARD where bno=#{bno}
+	</select>
+
+	<select id="count" resultType="long">
+		select count(*) from TBL_BOARD
+	</select>
+
+	<select id="todayCount" resultType="long">
+		select count(*) from TBL_BOARD
+		where to_char(regdate,'yyyy-mm-dd') = (select to_char(sysdate,'yyyy-mm-dd') from dual)
+	</select>
+</mapper>
