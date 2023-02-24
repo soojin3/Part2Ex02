@@ -66,10 +66,16 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.count();
 	}
 	
-	@Override//미완성
+	@Override
 	public Long todayCount() {
 		log.info("todayCount");
 		return mapper.todayCount();
 	}
+	
+	//@Override
+	//public Long todayList() {
+	//	log.info("todayCount");
+	//	return mapper.todayCount();
+	//}
 
 }

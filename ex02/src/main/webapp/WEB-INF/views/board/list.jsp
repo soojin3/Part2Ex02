@@ -33,13 +33,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    <c:set var="no" value="0"/><!-- 페이지 영역에 변수 선언 -->
                                     <c:forEach items="${list }" var="board">
                                         <tr>
-                                            <td>${board.bno }</td>
-                                            <td>${board.title }</td>
+                                            <td>${no=no+1 }</td>
+                                            <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
+                                            <td><a href="/board/get?bno=${board.bno }">${board.title }</a></td>
                                             <td>${board.writer }</td>
-                                            <td>${board.regdate }</td>
-                                            <td>${board.updatedate }</td>
+                                            <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
+                                            <c:if test="${board.regdate==board.updatedate }">
+                                            <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
+                                            </c:if>
+                                            <c:if test="${board.regdate!=board.updatedate }">
+                                            <td style="color:red"><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.updatedate }"/></td>
+                                            </c:if>
                                         </tr>
                                     </c:forEach>
                                     </tbody>

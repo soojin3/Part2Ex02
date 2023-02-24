@@ -5,7 +5,7 @@
 <!-- 세미콜론 절대 주의!!!!쓰지마시오 -->
 <mapper namespace="org.zerock.mapper.BoardMapper">
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
-		select * from TBL_BOARD order by bno asc
+		select * from TBL_BOARD order by bno desc
 	</select>
 
 	<insert id="insert">
