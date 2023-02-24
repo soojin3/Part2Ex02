@@ -31,6 +31,7 @@ public class BoardController {
 	public String register(BoardVO vo) {
 		log.info("url register...");
 		service.register(vo);
+		log.info("입력된 글 번호"+vo.getBno());
 		//목록으로 돌아가기
 		return "redirect: /board/list";
 	}

@@ -27,7 +27,8 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void register(BoardVO vo) {
 		log.info("register..."+vo);//+vo를 해서 맞나 확인
-		mapper.insert(vo);
+		mapper.insertSelectKey(vo);//입력한 글의 번호가 vo의 bno에 들어온다.
+		//mapper.insert(vo);	<-이게 전에 쓰더던 것 
 		// TODO Auto-generated method stub
 
 	}

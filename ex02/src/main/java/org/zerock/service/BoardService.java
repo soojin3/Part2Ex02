@@ -29,4 +29,6 @@ public interface BoardService {
 		Long todayCount();
 		
 		//오늘의 게시글 리스트 보기
+		
+		
 }
