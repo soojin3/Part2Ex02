@@ -7,7 +7,27 @@
 <head>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+}
 
+.w-btn:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn:active {
+    transform: scale(1.5);
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}
 @keyframes ring {
     0% {
         width: 30px;
@@ -19,10 +39,6 @@
         height: 300px;
         opacity: 0;
     }
-}
-.w-btn-gra1 {
-    background: linear-gradient(-45deg, #33ccff 0%, #ff99cc 100%);
-    color: white;
 }
 
 .w-btn-neon2 {
@@ -41,6 +57,7 @@
     box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
     font-weight: 700;
     transition: 0.3s;
+    text-align center;
 }
 
 .w-btn-neon2:hover {

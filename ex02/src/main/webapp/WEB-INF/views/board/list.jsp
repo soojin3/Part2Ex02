@@ -13,8 +13,11 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기
+                            </h6>
+                       <a href="/board/register" class="w-btn-neon2" style="float: right;" > 글쓰기 </a>
                         </div>
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

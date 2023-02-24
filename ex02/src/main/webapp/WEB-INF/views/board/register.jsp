@@ -34,7 +34,7 @@
 					</div>
 					<input type="submit" class="w-btn-neon2" value="입력">
 				</form>
-				<a href="/board/list" class="w-btn w-btn-gra1"> 목록으로 돌아가기 </a>
+				<a href="/board/list" class="w-btn-neon2"> 목록으로 돌아가기 </a>
 
 			</div>
 		</div>

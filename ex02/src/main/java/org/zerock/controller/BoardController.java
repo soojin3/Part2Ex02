@@ -28,9 +28,11 @@ public class BoardController {
 	}
 	
 	@PostMapping("/register")
-	public void register(BoardVO vo) {
+	public String register(BoardVO vo) {
 		log.info("url register...");
 		service.register(vo);
+		//목록으로 돌아가기
+		return "redirect: /board/list";
 	}
 	
 	@GetMapping("/get")
