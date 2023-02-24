@@ -42,8 +42,8 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testGet() throws Exception {
-		log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/get?bno=12")).andReturn().getModelAndView().getModelMap());
-		log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/get").param("bno", "12")).andReturn().getModelAndView().getModelMap());
+		//log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/get?bno=40")).andReturn().getModelAndView().getModelMap());
+		log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/get").param("bno", "40")).andReturn().getModelAndView().getModelMap());
 	}
 	@Test
 	public void testRemove() throws Exception {

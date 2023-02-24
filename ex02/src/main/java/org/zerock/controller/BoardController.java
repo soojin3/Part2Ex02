@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.service.BoardService;
 
@@ -28,18 +29,20 @@ public class BoardController {
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO vo) {
+	public String register(BoardVO vo, RedirectAttributes rttr) {
 		log.info("url register...");
 		service.register(vo);
 		log.info("입력된 글 번호"+vo.getBno());
+		rttr.addFlashAttribute("bno",vo.getBno());
+		
 		//목록으로 돌아가기
-		return "redirect: /board/list";
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/get")
-	public void get(Long bno,Model model) {
+	public void get(Long bno, Model model) {
 		log.info("url get...");
-		model.addAttribute("board"+service.get(bno));
+		model.addAttribute("board",service.get(bno));
 	}
 	@PostMapping("/remove")
 	public void remove(Long bno) {

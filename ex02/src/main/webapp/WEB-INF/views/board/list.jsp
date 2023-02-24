@@ -64,3 +64,10 @@
             </div>
             <!-- End of Main Content -->
 <%@include file="../includes/footer.jsp" %>
+<script>
+	var bno="${bno}";
+	console.log("작성한 글번호 확인1", bno);
+	if(bno){
+		alert(bno +" 번 글이 등록되었습니다.");
+	}
+</script>
