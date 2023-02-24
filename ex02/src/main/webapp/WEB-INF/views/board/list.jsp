@@ -23,6 +23,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>순번</th>
                                             <th>글 번호</th>
                                             <th>글 제목</th>
                                             <th>작성자</th>
@@ -40,6 +41,7 @@
                                     <c:forEach items="${list }" var="board">
                                         <tr>
                                             <td>${no=no+1 }</td>
+                                            <td>${board.bno }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
                                             <td><a href="/board/get?bno=${board.bno }">${board.title }</a></td>
                                             <td>${board.writer }</td>
@@ -66,8 +68,17 @@
 <%@include file="../includes/footer.jsp" %>
 <script>
 	var bno="${bno}";
+	var modifybno="${modifybno}";
+	var removebno="${removebno}";
 	console.log("작성한 글번호 확인1", bno);
+	console.log("수정한 글번호 확인1", modifybno);
 	if(bno){
 		alert(bno +" 번 글이 등록되었습니다.");
+	}
+	if(modifybno){
+		alert(modifybno +" 번 글이 수정되었습니다.");
+	}
+	if(removebno){
+		alert(removebno +" 번 글이 삭제되었습니다.");
 	}
 </script>

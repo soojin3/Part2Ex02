@@ -63,17 +63,17 @@ public class BoardMapperTests {
 	@Test
 	public void update() {
 		BoardVO vo = new BoardVO();
-		vo.setTitle("updaDay");
-		vo.setContent("UpupupNew");
-		vo.setWriter("updater");
-		vo.setBno(4L);
+		vo.setTitle("수정한다");
+		vo.setContent("수정한다");
+		vo.setWriter("수정한다");
+		vo.setBno(43L);
 		mapper.update(vo);
 		log.info(vo);
 	}
 	
 	@Test
 	public void delete() {
-		mapper.delete(3L);
+		mapper.delete(9L);
 	}
 	
 	@Test

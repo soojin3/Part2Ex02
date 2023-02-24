@@ -32,7 +32,11 @@
 							id="exampleInputEmail" name="content" " readonly>${board.content }</textarea>
 					</div>
 				<a href="/board/list" class="w-btn-neon2"> 목록으로 돌아가기 </a>
-
+				<a href="/board/modify?bno=${board.bno }" class="w-btn-neon2"> 수정 </a>
+				<form action="/board/remove" method="post" id="delForm">
+                            		<input type="hidden" name="bno" value="${board.bno}">
+                            		<input class="w-btn-neon2"   type="submit" value=" 삭제하기 " id="delButton">
+                            	</form>
 			</div>
 		</div>
 
@@ -42,3 +46,18 @@
 </div>
 <!-- End of Main Content -->
 <%@include file="../includes/footer.jsp"%>
+<script>
+$(document).ready(function(){ 
+	$("#delButton").on("click",function(e){
+		//1. 버튼 이벤트(submit) 금지
+		e.preventDefault();
+		//2. 확인창 띄어서 확인받기
+		var isConfirm= confirm("정말 삭제하시겠습니까?")
+		//3. 확인되었으면 submit처리
+		if(isConfirm){//true라면 이라는 뜻
+			$("#delForm").submit()
+		}
+	})
+	
+});
+</script>
