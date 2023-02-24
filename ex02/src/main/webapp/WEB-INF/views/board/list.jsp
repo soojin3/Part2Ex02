@@ -15,7 +15,7 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기
                             </h6>
-                       <a href="/board/register" class="w-btn-neon2" style="float: right;" > 글쓰기 </a>
+                       <a href="/board/register" class="w-btn w-btn-blue" style="float: right;" > 글쓰기 </a>
                         </div>
                         
                         <div class="card-body">
@@ -44,7 +44,13 @@
                                             <td>${board.bno }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
                                             <td><a href="/board/get?bno=${board.bno }">${board.title }</a></td>
+                                             <c:if test="${board.regdate==board.updatedate }">
                                             <td>${board.writer }</td>
+                                            
+                                            </c:if>
+                                            
+                                             <c:if test="${board.regdate!=board.updatedate }">
+                                             <td>${board.writer } 🔨수정🎈 </c:if>
                                             <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
                                             <c:if test="${board.regdate==board.updatedate }">
                                             <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
@@ -79,6 +85,10 @@
 		alert(modifybno +" 번 글이 수정되었습니다.");
 	}
 	if(removebno){
+		if(removebno==-1){
+			alert("패스워드가 다릅니다")
+		}else{
 		alert(removebno +" 번 글이 삭제되었습니다.");
+		}
 	}
 </script>

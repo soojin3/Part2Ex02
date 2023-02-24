@@ -31,11 +31,12 @@
 						<textarea rows="10" class="form-control form-control-user"
 							id="exampleInputEmail" name="content" " readonly>${board.content }</textarea>
 					</div>
-				<a href="/board/list" class="w-btn-neon2"> 목록으로 돌아가기 </a>
-				<a href="/board/modify?bno=${board.bno }" class="w-btn-neon2"> 수정 </a>
 				<form action="/board/remove" method="post" id="delForm">
+				<a href="/board/list" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
+				<a href="/board/modify?bno=${board.bno }" class="w-btn w-btn-blue"> 수정 </a>
                             		<input type="hidden" name="bno" value="${board.bno}">
-                            		<input class="w-btn-neon2"   type="submit" value=" 삭제하기 " id="delButton">
+                            		<input type="hidden" name="delKey" id="delKey">
+                            		<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
                             	</form>
 			</div>
 		</div>
@@ -47,7 +48,9 @@
 <!-- End of Main Content -->
 <%@include file="../includes/footer.jsp"%>
 <script>
-$(document).ready(function(){ 
+/* 
+ * 확인창을 이용한 확인 처리
+ $(document).ready(function(){ 
 	$("#delButton").on("click",function(e){
 		//1. 버튼 이벤트(submit) 금지
 		e.preventDefault();
@@ -59,5 +62,33 @@ $(document).ready(function(){
 		}
 	})
 	
+}); */
+/* $(document).ready(function(){ 
+	$("#delButton").on("click",function(e){
+		//1. 버튼 이벤트(submit) 금지
+		e.preventDefault();
+		//2. 입력창으로 값을 받고
+		var delKey=prompt("삭제를 위한 키값을 입력해 주세요")
+		//3. 그 내용도 같이 보내준다
+		if(delKey==1111){
+			$("#delForm").submit()
+		}else{
+			alert("키값이 틀렸습니다.")
+		}
+	})
+}); */
+$(document).ready(function(){ 
+	$("#delButton").on("click",function(e){
+		//1. 버튼 이벤트(submit) 금지
+		e.preventDefault();
+		//2. 입력창으로 값을 받고
+		var delKey=prompt("삭제를 위한 키값을 입력해 주세요")
+		//3. 그 내용도 같이 보내준다
+		if(delKey){
+		$("#delKey").val(delKey);
+		$("#delForm").submit();
+		//delKey 값을 보내면 처리
+		}
+	})
 });
 </script>

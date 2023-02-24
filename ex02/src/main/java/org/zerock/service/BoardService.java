@@ -16,6 +16,9 @@ public interface BoardService {
 		//3. 게시글 삭제(정상 동작 여부 확인)
 		boolean remove(Long bno);
 		
+		//3. 게시글 삭제 Alert위해 만든 것
+		boolean myremove(Long bno,String delKey);
+		
 		//4. 게시글 수정(정상 동작 여부 확인)
 		boolean modify(BoardVO vo);
 		

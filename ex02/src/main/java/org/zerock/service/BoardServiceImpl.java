@@ -2,20 +2,28 @@ package org.zerock.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 @Service//component
 @Log4j
-@AllArgsConstructor//생성자 주입
+//@AllArgsConstructor//생성자 주입
+@RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
 	
-	
+	@Autowired
 	BoardMapper mapper;
+	
+	@Value("${delKey}")
+	String delKey;
 	
 	
 	@Override
@@ -71,6 +79,16 @@ public class BoardServiceImpl implements BoardService {
 	public Long todayCount() {
 		log.info("todayCount");
 		return mapper.todayCount();
+	}
+
+	@Override
+	public boolean myremove(Long bno, String delKey) {
+		log.error("에러아님 확인된 값 "+this.delKey);
+		if(delKey.equals(this.delKey)) {
+			return mapper.delete(bno)==1;
+		}else {
+			return false;
+		}
 	}
 	
 	//@Override

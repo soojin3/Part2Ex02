@@ -7,26 +7,60 @@
 <head>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+    }
+button {
+    margin: 20px;
+}
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
 }
 
-.w-btn:hover {
-    letter-spacing: 2px;
-    transform: scale(1.2);
-    cursor: pointer;
+.w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
 }
 
-.w-btn-outline:hover {
-    letter-spacing: 2px;
-    transform: scale(1.2);
-    cursor: pointer;
+.w-btn-indigo {
+    background-color: aliceblue;
+    color: #1e6b7b;
 }
 
-.w-btn:active {
-    transform: scale(1.5);
+.w-btn-indigo-outline {
+    border: 3px solid aliceblue;
+    color: #1e6b7b;
 }
 
-.w-btn-outline:active {
-    transform: scale(1.5);
+.w-btn-indigo-outline:hover {
+    color: #1e6b7b;
+    background: aliceblue;
+}
+
+.w-btn-pink-outline:hover {
+    background-color: #f199bc;
+    color: #d4dfe6;
+}
+.w-btn-pink {
+    background-color: #f199bc;
+    color: #d4dfe6;
 }
 @keyframes ring {
     0% {
@@ -77,6 +111,7 @@
     transform: translate(-50%, -50%);
     animation: ring 1.5s infinite;
 }
+<!-- 이 위에 링 있다.-->
 </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -46,10 +46,14 @@ public class BoardController {
 	}
 	
 	@PostMapping("/remove")
-	public String remove(Long bno,RedirectAttributes rttr) {
+	public String remove(Long bno,RedirectAttributes rttr,String delKey) {
 		log.info("url remove...");
-		service.remove(bno);
-		rttr.addFlashAttribute("removebno",bno);
+		//service.remove(bno);
+		if(service.myremove(bno,delKey)) {
+			rttr.addFlashAttribute("removebno",bno);
+		}else {
+			rttr.addFlashAttribute("removebno","-1");
+		}
 		return "redirect:/board/list";
 	}
 	
