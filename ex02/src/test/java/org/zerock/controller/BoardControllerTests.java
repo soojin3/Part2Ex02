@@ -36,8 +36,8 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testRegister() throws Exception {
-		log.info(mockmvc.perform(MockMvcRequestBuilders.post("/board/register").param("title", "test title").param("content", "test content")
-				.param("writer", "testwriter")).andReturn().getModelAndView().getViewName());
+		log.info(mockmvc.perform(MockMvcRequestBuilders.post("/board/register").param("title", "I need bread").param("content", "I'm hungry")
+				.param("writer", "수진수진")).andReturn().getModelAndView().getViewName());
 	}
 	
 	@Test
