@@ -16,7 +16,8 @@
 <h1>
 <a href="/board/list">목록 보러 가기</a><br>
 <a href="/board/register">글 쓰러 가기</a><br>
-<a href="/board/rank">랭크 보러 가기</a>
+<a href="/board/rank">랭크 보러 가기</a><br>
+<a href="/board/last">최근 글 보러 가기</a><br>
 </h1>
 </body>
 </html>

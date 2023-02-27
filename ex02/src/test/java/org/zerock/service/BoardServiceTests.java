@@ -64,8 +64,12 @@ public class BoardServiceTests {//테스트에서는 생성자주입 !!절대 !!
 	
 	@Test
 	public void testRank() {
-		//미완성
-		service.rankList();
+		service.rank();
+	}
+	
+	@Test
+	public void testLast() {
+		service.last();
 	}
 
 }

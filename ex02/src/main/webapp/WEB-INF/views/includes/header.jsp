@@ -7,6 +7,16 @@
 <head>
 <style>
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+.twinkle{
+  -webkit-animation: blink 0.5s ease-in-out infinite alternate;
+ 
+ 
+}
+@-webkit-keyframes blink{
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 
 .w-btn-blue {
     background-color: #6aafe6;

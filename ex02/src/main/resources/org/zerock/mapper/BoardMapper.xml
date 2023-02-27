@@ -55,7 +55,13 @@
 		where to_char(regdate,'yyyy-mm-dd') = (select to_char(sysdate,'yyyy-mm-dd') from dual)
 	</select>
 	
-	<select id="rankList" resultType="org.zerock.domain.BoardVO">
+	<select id="rank" resultType="org.zerock.domain.RankVO">
 		select writer,count(*) count from TBL_BOARD group by writer order by count desc
 	</select>
+	
+	<select id="last" resultType="org.zerock.domain.LastVO">
+		select*from (select * from TBL_BOARD order by regdate desc) where ROWNUM = 1
+	</select>
+	
+	
 </mapper>

@@ -3,6 +3,8 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.LastVO;
+import org.zerock.domain.RankVO;
 
 public interface BoardService {
 	//이 메소드는 서비스 측면에서 생각
@@ -35,5 +37,8 @@ public interface BoardService {
 		//오늘의 게시글 리스트 보기
 		
 		//게시글 순위 보기
-		List<BoardVO> rankList();
+		List<RankVO> rank();
+
+		//최근 글 보기
+		List<LastVO> last();
 }

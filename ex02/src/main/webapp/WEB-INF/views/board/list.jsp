@@ -27,6 +27,7 @@
                                             <th>순번</th>
                                             <th>글 번호</th>
                                             <th>글 제목</th>
+                                            <th>조회수</th>
                                             <th>작성자</th>
                                             <th>작성일</th>
                                             <th>수정일</th>
@@ -45,6 +46,7 @@
                                             <td>${board.bno }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
                                             <td><a href="/board/get?bno=${board.bno }"><c:out value="${board.title }"></c:out></a></td>
+                                            <td>조회수</td>
                                              <c:if test="${board.regdate==board.updatedate }">
                                             <td>${board.writer }</td>
                                             

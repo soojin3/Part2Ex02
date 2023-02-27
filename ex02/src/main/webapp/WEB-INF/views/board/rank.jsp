@@ -36,13 +36,12 @@
                                     </tfoot>
                                     <tbody>
                                     <c:set var="no" value="0"/><!-- 페이지 영역에 변수 선언 -->
-                                    <c:forEach items="${rankList }" var="board">
+                                    <c:forEach items="${list }" var="board">
                                         <tr>
                                             <td>${no=no+1 }</td>
                                             <td>${board.writer }</td>
                                             <td>${board.count }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
-                                             
                                            
                                         </tr>
                                     </c:forEach>

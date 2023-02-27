@@ -8,6 +8,8 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.LastVO;
+import org.zerock.domain.RankVO;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -100,9 +102,13 @@ public class BoardServiceImpl implements BoardService {
 	
 
 	@Override
-	public List<BoardVO> rankList() {
-		
-		return mapper.rankList();
+	public List<RankVO> rank() {
+		return mapper.rank();
+	}
+	
+	@Override
+	public List<LastVO> last() {
+		return mapper.last();
 	}
 
 }

@@ -107,7 +107,7 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testRank(){
-		mapper.rankList().forEach(vo -> log.info(vo));
+		mapper.rank().forEach(vo -> log.info(vo));
 	}
 
 }

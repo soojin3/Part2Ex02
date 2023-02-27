@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.LastVO;
+import org.zerock.domain.RankVO;
 
 public interface BoardMapper {//인터페이스는 언제나 public 이다. 
 	
@@ -38,6 +40,10 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	Long todayCount();
 	
 	//순위 / 글쓴이 / 글 개수 board/rank
-	List<BoardVO> rankList();
+	List<RankVO> rank();
+
+	//가장 최근에 작성된 글 --> 글번호 가장 큰 것 뽑기 , 나오는건 글 제목만 나오게 하기
+	List<LastVO> last();
+	
 
 }

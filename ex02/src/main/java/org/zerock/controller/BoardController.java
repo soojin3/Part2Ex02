@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.LastVO;
+import org.zerock.domain.RankVO;
 import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -77,9 +81,20 @@ public class BoardController {
 	}
 	
 	@GetMapping("/rank")
-	public void ranl(Model model) {
+	public void rank(Model model) {
 		log.info("rank...");
-		model.addAttribute("rankList",service.rankList());
+		List<RankVO> list=service.rank();
+		model.addAttribute("list", list);
+		//model.addAttribute("rankList",service.rankList());
+		
+	}
+	
+	@GetMapping("/last")
+	public void last(Model model) {
+		log.info("last...");
+		List<LastVO> list=service.last();
+		model.addAttribute("list", list);
+		//model.addAttribute("rankList",service.rankList());
 		
 	}
 
