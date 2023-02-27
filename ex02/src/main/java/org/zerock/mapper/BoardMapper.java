@@ -37,4 +37,7 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	//오늘의 게시글 수
 	Long todayCount();
 	
+	//순위 / 글쓴이 / 글 개수 board/rank
+	List<BoardVO> rankList();
+
 }

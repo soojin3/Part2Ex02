@@ -54,4 +54,8 @@
 		select count(*) from TBL_BOARD
 		where to_char(regdate,'yyyy-mm-dd') = (select to_char(sysdate,'yyyy-mm-dd') from dual)
 	</select>
+	
+	<select id="rankList" resultType="org.zerock.domain.BoardVO">
+		select writer,count(*) count from TBL_BOARD group by writer order by count desc
+	</select>
 </mapper>

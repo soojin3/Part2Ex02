@@ -96,5 +96,13 @@ public class BoardServiceImpl implements BoardService {
 	//	log.info("todayCount");
 	//	return mapper.todayCount();
 	//}
+	
+	
+
+	@Override
+	public List<BoardVO> rankList() {
+		
+		return mapper.rankList();
+	}
 
 }

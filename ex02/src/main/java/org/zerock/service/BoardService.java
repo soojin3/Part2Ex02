@@ -30,8 +30,10 @@ public interface BoardService {
 		
 		//오늘의 게시글 수
 		Long todayCount();
+
 		
 		//오늘의 게시글 리스트 보기
 		
-		
+		//게시글 순위 보기
+		List<BoardVO> rankList();
 }

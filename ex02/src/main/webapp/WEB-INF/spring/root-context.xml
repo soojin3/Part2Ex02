@@ -30,5 +30,5 @@
 	<!-- 마이바티스 인식하려면 Namespaces에서 마이바티스 체크 -->
 	 <mybatis-spring:scan base-package="org.zerock.mapper"/>
 	 
-	 <context:component-scan	 base-package="org.zerock.service" />
+	 <context:component-scan base-package="org.zerock.service" />
 </beans>

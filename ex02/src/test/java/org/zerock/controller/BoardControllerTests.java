@@ -64,6 +64,12 @@ public class BoardControllerTests {
 		//log.info(mockmvc.perform(MockMvcRequestBuilders.post("/board/modify").param("bno", "12")).andReturn().getModelAndView().getModelMap());
 	}
 	
+	@Test
+	public void testRank() throws Exception {
+		log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/rank")).andReturn().getModelAndView().getModelMap());
+		log.info(mockmvc.perform(MockMvcRequestBuilders.get("/board/rank")).andReturn().getModelAndView().getViewName());//열려야할 페이지 이름
+	}
+	
 	
 	
 }

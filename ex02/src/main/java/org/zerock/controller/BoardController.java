@@ -75,5 +75,12 @@ public class BoardController {
 		log.info("count...");
 		model.addAttribute("bno",service.count());
 	}
+	
+	@GetMapping("/rank")
+	public void ranl(Model model) {
+		log.info("rank...");
+		model.addAttribute("rankList",service.rankList());
+		
+	}
 
 }

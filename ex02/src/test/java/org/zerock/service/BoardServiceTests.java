@@ -61,5 +61,11 @@ public class BoardServiceTests {//테스트에서는 생성자주입 !!절대 !!
 	public void testTodayCount() {
 		service.todayCount();
 	}
+	
+	@Test
+	public void testRank() {
+		//미완성
+		service.rankList();
+	}
 
 }

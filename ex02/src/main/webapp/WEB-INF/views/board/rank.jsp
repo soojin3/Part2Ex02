@@ -6,7 +6,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">스프링 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">랭킹 게시판</h1>
                     <p class="mb-4">코드로 배우는 스프링 웹 프로젝트(개정판)를 책을 보고 똑같이 만들고 있어요<br> <a target="_blank"
                             href="https://startbootstrap.com/previews/sb-admin-2">우리가 사용한 템플릿</a>.</p>
 
@@ -24,12 +24,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>순번</th>
-                                            <th>글 번호</th>
-                                            <th>글 제목</th>
+                                            <th>순위</th>
                                             <th>작성자</th>
-                                            <th>작성일</th>
-                                            <th>수정일</th>
+                                            <th>글 개수</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -39,26 +36,14 @@
                                     </tfoot>
                                     <tbody>
                                     <c:set var="no" value="0"/><!-- 페이지 영역에 변수 선언 -->
-                                    <c:forEach items="${list }" var="board">
+                                    <c:forEach items="${rankList }" var="board">
                                         <tr>
                                             <td>${no=no+1 }</td>
-                                            <td>${board.bno }</td>
-                                            <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
-                                            <td><a href="/board/get?bno=${board.bno }"><c:out value="${board.title }"></c:out></a></td>
-                                             <c:if test="${board.regdate==board.updatedate }">
                                             <td>${board.writer }</td>
-                                            
-                                            </c:if>
-                                            
-                                             <c:if test="${board.regdate!=board.updatedate }">
-                                             <td>${board.writer } 🔨수정🎈 </c:if>
-                                            <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
-                                            <c:if test="${board.regdate==board.updatedate }">
-                                            <td><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.regdate }"/></td>
-                                            </c:if>
-                                            <c:if test="${board.regdate!=board.updatedate }">
-                                            <td style="color:red"><fmt:formatDate pattern="YY년 MM월 dd일 a HH시 mm분" value="${board.updatedate }"/></td>
-                                            </c:if>
+                                            <td>${board.count }</td>
+                                            <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
+                                             
+                                           
                                         </tr>
                                     </c:forEach>
                                     </tbody>
