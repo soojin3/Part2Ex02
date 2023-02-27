@@ -29,15 +29,15 @@
 					</div>
 					<div class="form-group">
 						<textarea rows="10" class="form-control form-control-user"
-							id="exampleInputEmail" name="content" " readonly>${board.content }</textarea>
+							id="exampleInputEmail" name="content" readonly>${board.content }</textarea>
 					</div>
 				<form action="/board/remove" method="post" id="delForm">
 				<a href="/board/list" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
 				<a href="/board/modify?bno=${board.bno }" class="w-btn w-btn-blue"> 수정 </a>
-                            		<input type="hidden" name="bno" value="${board.bno}">
-                            		<input type="hidden" name="delKey" id="delKey">
-                            		<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
-                            	</form>
+                           		<input type="hidden" name="bno" value="${board.bno}">
+                           		<input type="hidden" name="delKey" id="delKey">
+                            	<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
+                 </form>
 			</div>
 		</div>
 

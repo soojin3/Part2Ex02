@@ -109,5 +109,11 @@ public class BoardMapperTests {
 	public void testRank(){
 		mapper.rank().forEach(vo -> log.info(vo));
 	}
+	
+	@Test
+	public void visit() {
+		log.info(mapper.visit());
+		
+	}
 
 }

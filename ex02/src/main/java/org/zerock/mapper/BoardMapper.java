@@ -45,5 +45,11 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	//가장 최근에 작성된 글 --> 글번호 가장 큰 것 뽑기 , 나오는건 글 제목만 나오게 하기
 	List<LastVO> last();
 	
+	//방문횟수 세기
+	Long visit();
+
+	//Long visitUp(Long bno);
+
+	
 
 }

@@ -68,6 +68,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO get(Long bno) {
 		log.info("get..."+bno);
+		//mapper.visitUp(bno);
 		return mapper.read(bno);
 	}
 
@@ -109,6 +110,18 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<LastVO> last() {
 		return mapper.last();
+	}
+
+	//@Override
+	//public boolean visit(Long bno) {
+	//	log.info("visiter ..."+mapper.visit(bno));
+//		return mapper.visit(bno)==1;
+	//}
+
+	@Override
+	public Long visit() {
+		// TODO Auto-generated method stub
+		return mapper.visit();
 	}
 
 }

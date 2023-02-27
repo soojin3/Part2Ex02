@@ -20,24 +20,23 @@
 			<div class="table-responsive">
 
 
-				<form action="/board/modify" method="post">
-
+				<form action="/board/modify" method="post" id="modifyForm">
 
 					<input type="hidden" name="bno" value="${board.bno }">
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail" name="title" value="${board.title }">
+							id="title" name="title" value="${board.title }">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail" name="writer" value="${board.writer }">
+							id="writer" name="writer" value="${board.writer }">
 					</div>
 					<div class="form-group">
 						<textarea rows="10" class="form-control form-control-user"
-							id="exampleInputEmail" name="content"">${board.content }</textarea>
+							id="text" name="content">${board.content }</textarea>
 					</div>
 					 <a	href="/board/modify?bno=${board.bno }" class="w-btn-neon2">
-					  <input type="submit" value="수정하기" class="w-btn-neon2"></a><br>
+					  <input id ="modifyButton" type="submit" value="수정하기" class="w-btn-neon2"></a><br>
 					<a href="/board/list" class="w-btn-neon2"> 목록으로 돌아가기 </a>
 				</form>
 			</div>
@@ -49,3 +48,27 @@
 </div>
 <!-- End of Main Content -->
 <%@include file="../includes/footer.jsp"%>
+<script>
+var title= "${board.title}";
+var writer= "${board.writer}";
+var content= "${board.content}";
+console.log("기존 내용 확인: ", title, writer, content);	
+
+$(document).ready(function() {
+	$("#modifyButton").on("click", function(e){
+		e.preventDefault();
+		var Mtitle= $("#title").val();
+		var Mwriter= $("#writer").val();
+		var Mcontent= $("#text").val();
+		console.log("수정된 내용 확인: ", Mtitle, Mwriter, Mcontent);			
+		
+		if(title == Mtitle && writer == Mwriter && content == Mcontent) {
+			alert("수정할 내용이 없습니다. 내용을 수정해 주세요.")
+		}else {
+			$("#modifyForm").submit();
+		}
+	})
+})
+
+</script>
+

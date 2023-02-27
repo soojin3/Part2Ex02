@@ -9,7 +9,7 @@
                     <h1 class="h3 mb-2 text-gray-800">랭킹 게시판</h1>
                     <p class="mb-4">코드로 배우는 스프링 웹 프로젝트(개정판)를 책을 보고 똑같이 만들고 있어요<br> <a target="_blank"
                             href="https://startbootstrap.com/previews/sb-admin-2">우리가 사용한 템플릿</a>.</p>
-
+		
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -38,7 +38,7 @@
                                     <c:set var="no" value="0"/><!-- 페이지 영역에 변수 선언 -->
                                     <c:forEach items="${list }" var="board">
                                         <tr>
-                                            <td>${no=no+1 }</td>
+                                            <td>${no=no+1 } 등</td>
                                             <td>${board.writer }</td>
                                             <td>${board.count }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->

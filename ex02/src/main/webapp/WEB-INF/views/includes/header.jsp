@@ -154,7 +154,7 @@ button {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/board/list">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="bi bi-balloon-heart"></i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-balloon-heart" viewBox="0 0 16 16">
@@ -239,18 +239,16 @@ button {
                         <a class="collapse-item" href="/board/register">글 등록</a>
                         <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/board/rank">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                    <span>랭킹 게시판</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
@@ -259,7 +257,6 @@ button {
                     <i class="fas fa-fw fa-table"></i>
                     <i class="bi bi-balloon-heart"></i>
                     <span >게시글 목록</span>
-                    <span class="material-symbols-outlined">하트</span>
                     </a>
             </li>
 
@@ -454,7 +451,7 @@ button {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Soojin </span>
                                 <img class="img-profile rounded-circle"
                                     src="/resources/img/undraw_profile.svg">
                             </a>

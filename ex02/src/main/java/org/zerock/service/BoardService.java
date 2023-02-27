@@ -33,7 +33,6 @@ public interface BoardService {
 		//오늘의 게시글 수
 		Long todayCount();
 
-		
 		//오늘의 게시글 리스트 보기
 		
 		//게시글 순위 보기
@@ -41,4 +40,9 @@ public interface BoardService {
 
 		//최근 글 보기
 		List<LastVO> last();
+		
+		//조회수(동작 여부 확인)
+		//boolean visit(Long bno);
+		
+		Long visit();
 }

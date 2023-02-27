@@ -16,8 +16,8 @@
 	<div class="card shadow mb-4">
 		<h2>
 			<b class="twinkle" style="color: #7cfc00"> 🎈🎈</b> 
-			<b class="twinkle" style="color: #0000ff">게시글</b> 
-			<b class="twinkle" style="color: #ffd700">목록</b> 
+			<b class="twinkle" style="color: #0000ff">가장</b> 
+			<b class="twinkle" style="color: #ffd700">최근 글</b> 
 			<span style="text-shadow: 1px 1px 1px #000;">보기</span>~~
 		</h2>
 	</div>
@@ -46,7 +46,7 @@
 					<!-- 페이지 영역에 변수 선언 -->
 					<c:forEach items="${list }" var="board">
 						<tr>
-							<td class="twinkle" style="color: #0000ff">💡 ${board.title }</td>
+							<td><a href="/board/get?bno=${board.bno }">💡 ${board.title }</a></td>
 							<!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
 
 						</tr>

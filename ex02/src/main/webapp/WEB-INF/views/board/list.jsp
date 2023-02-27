@@ -4,7 +4,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">스프링 게시판</h1>
                     <p class="mb-4">코드로 배우는 스프링 웹 프로젝트(개정판)를 책을 보고 똑같이 만들고 있어요<br> <a target="_blank"
@@ -46,10 +45,10 @@
                                             <td>${board.bno }</td>
                                             <!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
                                             <td><a href="/board/get?bno=${board.bno }"><c:out value="${board.title }"></c:out></a></td>
-                                            <td>조회수</td>
+                                            <td>${board.visit }</td>
+                                            
                                              <c:if test="${board.regdate==board.updatedate }">
                                             <td>${board.writer }</td>
-                                            
                                             </c:if>
                                             
                                              <c:if test="${board.regdate!=board.updatedate }">

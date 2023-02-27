@@ -85,7 +85,6 @@ public class BoardController {
 		log.info("rank...");
 		List<RankVO> list=service.rank();
 		model.addAttribute("list", list);
-		//model.addAttribute("rankList",service.rankList());
 		
 	}
 	
