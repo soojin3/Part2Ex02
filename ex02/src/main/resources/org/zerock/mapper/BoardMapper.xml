@@ -8,7 +8,7 @@
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[ 
 		select  bno, title, writer, regdate, updatedate
-		from(select /*+ INDEX_DESC(tbl_board tbl_board_index1) */   rownum rn, bno, title, writer, regdate, updatedate 
+		from(select /*+ INDEX_DESC(tbl_board tbl_board_index1) */   rownum rn, bno, title, writer, regdate, updatedate
 		from tbl_board where rownum<=20)
 		where rn>10 and rn<=20
 		 ]]>

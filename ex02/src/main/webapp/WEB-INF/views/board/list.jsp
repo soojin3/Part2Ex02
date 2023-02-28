@@ -75,6 +75,40 @@
 					</tbody>
 				</table>
 			</div>
+			<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+			
+			<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  <c:if test="${pageDTO.prev }">
+    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}">Previous</a></li>
+    </c:if>
+    
+    <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
+    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
+    <c:if test="${pageDTO.cri.pageNum ==num }"><b>${num }</b></c:if>
+			<c:if test="${pageDTO.cri.pageNum !=num }"><b>${num }</b></c:if>
+			</a></li>
+    </c:forEach>
+    
+    <c:if test="${pageDTO.next }">
+    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.endPage+1 }&amount=${pageDTO.cri.amount}">Next</a></li>
+    </c:if>
+  </ul>
+</nav>
 		</div>
 	</div>
 
