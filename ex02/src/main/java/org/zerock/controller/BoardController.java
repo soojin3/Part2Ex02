@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
 import org.zerock.service.BoardService;
@@ -22,10 +23,16 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 	BoardService service;
 	
+	@GetMapping("")
+	public void all() {
+		
+	}
+	
+	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Model model, Criteria cri) {
 		log.info("list...");
-		model.addAttribute("list",service.getList());
+		model.addAttribute("list",service.getList(cri));
 	}
 	@GetMapping("/register")
 	public void register() {
@@ -46,6 +53,7 @@ public class BoardController {
 	@GetMapping("/get")
 	public void get(Long bno, Model model) {
 		log.info("url get...");
+		//service.visit();
 		model.addAttribute("board",service.get(bno));
 	}
 	

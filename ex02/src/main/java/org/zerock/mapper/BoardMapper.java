@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
 
@@ -12,6 +13,10 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	//게시물 목록 가져오기
 	//@Select("select*from TBL_BOARD")
 	List<BoardVO> getList();
+	
+	//NEW
+	//게시물 목록 가져오기
+	List<BoardVO> getListWithiPaging(Criteria cri);
 	
 	//게시글 등록 return int 등록된 글의 개수
 	//void insert (BoardVO vo);//vo객체 넣어주기

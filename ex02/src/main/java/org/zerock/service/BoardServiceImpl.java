@@ -8,6 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
 import org.zerock.mapper.BoardMapper;
@@ -29,9 +30,9 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(Criteria cri) {
 		log.info("getList 요청 ...");
-		return mapper.getList();
+		return mapper.getListWithiPaging(cri);
 	}
 
 	@Override
@@ -120,7 +121,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public Long visit() {
-		// TODO Auto-generated method stub
+		log.info("visiter...");
 		return mapper.visit();
 	}
 

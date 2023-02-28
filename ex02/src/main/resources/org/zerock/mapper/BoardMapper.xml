@@ -4,9 +4,25 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 세미콜론 절대 주의!!!!쓰지마시오 -->
 <mapper namespace="org.zerock.mapper.BoardMapper">
+	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
-		select * from TBL_BOARD order by bno desc
+	<![CDATA[ 
+		select  bno, title, writer, regdate, updatedate
+		from(select /*+ INDEX_DESC(tbl_board tbl_board_index1) */   rownum rn, bno, title, writer, regdate, updatedate 
+		from tbl_board where rownum<=20)
+		where rn>10 and rn<=20
+		 ]]>
+		 
 	</select>
+	<select id="getListWithiPaging" resultType="org.zerock.domain.BoardVO">
+	<![CDATA[ 
+ 	select bno, title, writer, regdate, updatedate
+		from(select /*+ INDEX_ASC(tbl_board TBL_BOARD_INDEX1)*/ rownum rn, bno, title, writer, regdate, updatedate
+         from tbl_board where rownum<=#{pageNum} *#{amount}) 
+		where rn>(#{pageNum}-1)* #{amount} 
+		 ]]>
+	</select>
+	
 
 	<insert id="insert">
 		insert into TBL_BOARD(bno, title, content, writer, visit)
