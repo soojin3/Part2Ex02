@@ -85,22 +85,28 @@
 			</div>
 		<nav aria-label="...">
   <ul class="pagination">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous 수정중</a>
-    </li>
+      <c:if test="${pageDTO.prev }">
+    <li class="page-item disabled"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Previous</a></li>
+    </c:if>
     
-    <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
-    <li class="page-item active">
-      <a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
-      현재 페이지는 ${pageDTO.cri.pageNum	 } <span class="sr-only">(current)</span></a>
-    </li>
+    <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">    
+        <c:if test="${pageDTO.cri.pageNum ==num }">
+        <li class="page-item active">        
+      	<a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
+        <b>${num }</b> </a></li>
+        </c:if>
+		<c:if test="${pageDTO.cri.pageNum !=num }">
+		<li class="page-item"> 
+		<a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
+		<b>${num }</b> </a></li>
+		</c:if>		
      </c:forEach>
      
-     <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
+ <%--     <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
     <li class="page-item"><a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
-    <c:if test="${pageDTO.cri.pageNum ==num }"><b>${num }</b></c:if>
+    <c:if test="${pageDTO.cri.pageNum ==num }"><b class="page-link">${num }</b></c:if>
 	<c:if test="${pageDTO.cri.pageNum !=num }"><b>${num }</b></c:if></a></li>
-    </c:forEach>
+    </c:forEach> --%>
     
     <c:if test="${pageDTO.next }">
     <li class="page-item">
@@ -113,7 +119,7 @@
 			<nav aria-label="Page navigation example">
   <ul class="pagination">
   <c:if test="${pageDTO.prev }">
-    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Previous</a></li>
     </c:if>
     
     <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
