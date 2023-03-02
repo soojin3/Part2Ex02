@@ -23,6 +23,9 @@
 				<form action="/board/modify" method="post" id="modifyForm">
 
 					<input type="hidden" name="bno" value="${board.bno }">
+				    <input type="hidden" name="pageNum" value="${cri.pageNum }">
+				    <script>console.log("테스트중 페이지넘버 : ",${cri.pageNum}); </script>
+				    <input type="hidden" name="amount" value="${cri.amount }">
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
 							id="title" name="title" value="${board.title }">
@@ -35,10 +38,9 @@
 						<textarea rows="10" class="form-control form-control-user"
 							id="text" name="content">${board.content }</textarea>
 					</div>
-					 <a	href="/board/modify?bno=${board.bno }" class="w-btn-neon2">
-					  <input id ="modifyButton" type="submit" value="수정하기" class="w-btn-neon2"></a><br>
-					<a href="/board/list" class="w-btn-neon2"> 목록으로 돌아가기 </a>
+					<input id ="modifyButton" type="submit" value="수정하기" class="w-btn-neon2"><br>
 				</form>
+					<a href="/board/list?pageNum=${cri.pageNum }&amount=${cri.amount}" class="w-btn-neon2"> 목록으로 돌아가기 </a>
 			</div>
 		</div>
 

@@ -17,6 +17,12 @@
 			<h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기</h6>
 			<a href="/board/register" class="w-btn w-btn-blue"
 				style="float: right;"> 글쓰기 </a>
+				<select name="food">
+            <option value="1">10개씩 보기</option>
+            <option value="2">20</option>
+            <option value="3">30</option>
+
+        </select>
 		</div>
 
 		<div class="card-body">
@@ -49,8 +55,8 @@
 									${no=no+1 }</td>
 								<td>${board.bno }</td>
 								<!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
-								<td><a href="/board/get?bno=${board.bno }"><c:out
-											value="${board.title }"></c:out></a></td>
+								<td><a href="/board/get?bno=${board.bno }&pageNum=${pageDTO.cri.pageNum}&amount=${pageDTO.cri.amount }">
+								<c:out value="${board.title }"></c:out></a></td>
 								<td>${board.visit }</td>
 
 								<c:if test="${board.regdate==board.updatedate }">
@@ -75,14 +81,14 @@
 					</tbody>
 				</table>
 			</div>
-			<nav aria-label="...">
+		<nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">Previous</a>
+      <a class="page-link" href="#" tabindex="-1">Previous 수정중</a>
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      <a class="page-link" href="#">현재 페이지는 ${pageDTO.cri.pageNum	 } <span class="sr-only">(current)</span></a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -90,7 +96,7 @@
     </li>
   </ul>
 </nav>
-			
+			현재 페이지는 ${pageDTO.cri.pageNum	 }
 			<nav aria-label="Page navigation example">
   <ul class="pagination">
   <c:if test="${pageDTO.prev }">

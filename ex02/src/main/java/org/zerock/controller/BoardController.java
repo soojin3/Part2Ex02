@@ -39,7 +39,14 @@ public class BoardController {
 		//PageDTO dto=new PageDTO(123, cri);//전송 확인
 		//log.info("페이지 정보 "+dto);//전송 확인
 		//model.addAttribute(new PageDTO(500, cri));//리턴타입의 classDTO를 봐라, 이름을 적어 보내지 않아도 이름이 같다
+		
+		//페이지 속도개선 편법 튜닝
+		//1. 최초에 테이블 개수 한번 읽기
+		//2. 이후에는 어차피 테이블 개수는 늘어날테니 그 값 이상일때만 
+		
 		model.addAttribute(new PageDTO(service.count(),cri));//리턴타입의 classDTO를 봐라, 이름을 적어 보내지 않아도 이름이 같다
+		
+		
 	}
 
 	@GetMapping("/register")
@@ -59,35 +66,37 @@ public class BoardController {
 	}
 
 	@GetMapping("/get")
-	public void get(Long bno, Model model) {
+	public void get(Long bno, Model model, Criteria cri) {
 		log.info("url get...");
 		// service.visit();
 		model.addAttribute("board", service.get(bno));
+		model.addAttribute("cri", cri);//페이지 정보를 유지하기 위해 보냄
 	}
 
 	@PostMapping("/remove")
-	public String remove(Long bno, RedirectAttributes rttr, String delKey) {
+	public String remove(Long bno, RedirectAttributes rttr, String delKey, Criteria cri) {
 		log.info("url remove...");
 		// service.remove(bno);
-		if (service.myremove(bno, delKey)) {
+		if (service.myremove(bno, delKey)) {//삭제처리
 			rttr.addFlashAttribute("removebno", bno);
 		} else {
 			rttr.addFlashAttribute("removebno", "-1");
 		}
-		return "redirect:/board/list";
+		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
 	}
 
 	@GetMapping("/modify") // 수정화면 출력
-	public void modify(Long bno, Model model) {
+	public void modify(Long bno, Model model,Criteria cri) {
 		model.addAttribute("board", service.get(bno));
+		model.addAttribute("cri", cri);
 	}
 
 	@PostMapping("/modify") // addFlashAttribute로 해야 한다.
-	public String modify(BoardVO vo, RedirectAttributes rttr) {
+	public String modify(BoardVO vo, RedirectAttributes rttr,Criteria cri) {
 		log.info("url modify....." + vo);
 		service.modify(vo);
 		rttr.addFlashAttribute("modifybno", vo.getBno());
-		return "redirect:/board/list";
+		return "redirect:/board/list?pageNum="+cri.getPageNum()+"&amount="+cri.getAmount();
 	}
 
 	@GetMapping("/count")

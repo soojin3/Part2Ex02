@@ -32,11 +32,13 @@
 							id="exampleInputEmail" name="content" readonly>${board.content }</textarea>
 					</div>
 				<form action="/board/remove" method="post" id="delForm">
-				<a href="/board/list" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
-				<a href="/board/modify?bno=${board.bno }" class="w-btn w-btn-blue"> 수정 </a>
-                           		<input type="hidden" name="bno" value="${board.bno}">
-                           		<input type="hidden" name="delKey" id="delKey">
-                            	<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
+               		<input type="hidden" name="bno" value="${board.bno}">
+               		<input type="hidden" name="delKey" id="delKey">
+               		<input type="hidden" name="pageNum" value="${cri.pageNum }">
+               		<input type="hidden" name="amount" value="${cri.amount }">
+                 	<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
+				<a href="/board/list?pageNum=${cri.pageNum }&amount${cri.amount}" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
+				<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}" class="w-btn w-btn-blue"> 수정 </a>
                  </form>
 			</div>
 		</div>
@@ -86,6 +88,7 @@ $(document).ready(function(){
 		//3. 그 내용도 같이 보내준다
 		if(delKey){
 		$("#delKey").val(delKey);
+		
 		$("#delForm").submit();
 		//delKey 값을 보내면 처리
 		}
