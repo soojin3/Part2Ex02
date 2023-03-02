@@ -7,8 +7,8 @@
 	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[ 
-		select  bno, title, writer, regdate, updatedate
-		from(select /*+ INDEX_DESC(tbl_board tbl_board_index1) */   rownum rn, bno, title, writer, regdate, updatedate
+		select  bno, title, writer, regdate, updatedate,visit
+		from(select /*+ INDEX_DESC(tbl_board tbl_board_index1) */   rownum rn, bno, title, writer, regdate, updatedate, visit
 		from tbl_board where rownum<=20)
 		where rn>10 and rn<=20
 		 ]]>
@@ -16,8 +16,8 @@
 	</select>
 	<select id="getListWithiPaging" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[ 
- 	select bno, title, writer, regdate, updatedate
-		from(select /*+ INDEX_ASC(tbl_board TBL_BOARD_INDEX1)*/ rownum rn, bno, title, writer, regdate, updatedate
+ 	select bno, title, writer, regdate, updatedate, visit
+		from(select /*+ INDEX_ASC(tbl_board TBL_BOARD_INDEX1)*/ rownum rn, bno, title, writer, regdate, updatedate, visit
          from tbl_board where rownum<=#{pageNum} *#{amount}) 
 		where rn>(#{pageNum}-1)* #{amount} 
 		 ]]>

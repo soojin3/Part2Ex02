@@ -53,7 +53,7 @@
 <script>
 var title= "${board.title}";
 var writer= "${board.writer}";
-var content= "${board.content}";
+var content= "${board.content}`;
 console.log("기존 내용 확인: ", title, writer, content);	
 
 $(document).ready(function() {
@@ -61,7 +61,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		var Mtitle= $("#title").val();
 		var Mwriter= $("#writer").val();
-		var Mcontent= $("#text").val();
+		var Mcontent= $("#text`).val();
 		console.log("수정된 내용 확인: ", Mtitle, Mwriter, Mcontent);			
 		
 		if(title == Mtitle && writer == Mwriter && content == Mcontent) {

@@ -37,7 +37,7 @@
                		<input type="hidden" name="pageNum" value="${cri.pageNum }">
                		<input type="hidden" name="amount" value="${cri.amount }">
                  	<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
-				<a href="/board/list?pageNum=${cri.pageNum }&amount${cri.amount}" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
+				<a href="/board/list?pageNum=${cri.pageNum }&amount=${cri.amount}" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
 				<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}" class="w-btn w-btn-blue"> 수정 </a>
                  </form>
 			</div>

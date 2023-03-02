@@ -17,12 +17,14 @@
 			<h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기</h6>
 			<a href="/board/register" class="w-btn w-btn-blue"
 				style="float: right;"> 글쓰기 </a>
-				<select name="food">
-            <option value="1">10개씩 보기</option>
-            <option value="2">20</option>
-            <option value="3">30</option>
-
+				글 보기 개수 선택
+		<select id="amount">
+            <option <c:if test="${pageDTO.cri.amount==5}"> selected </c:if> value="5">5</option>
+            <option <c:if test="${pageDTO.cri.amount==10}"> selected </c:if> value="10">10</option>
+            <option <c:if test="${pageDTO.cri.amount==20}"> selected </c:if> value="20">20</option>
+            <option <c:if test="${pageDTO.cri.amount==30}"> selected </c:if> value="30">30</option>
         </select>
+        
 		</div>
 
 		<div class="card-body">
@@ -153,4 +155,10 @@
 	
 	//2. 뒤로가기 확인을 위해 표시해 두기(history.replaceState(,,))
 	history.replaceState({}, null, null);
+	
+	$("#amount").change(function(e){
+					//on("chage"),function(e){})같은 표현식
+					//on("click"),function(e){})같은 표현식
+		location.href="/board/list?pageNum=${pageDTO.cri.pageNum}&amount="+$("#amount").val();
+	});
 </script>
