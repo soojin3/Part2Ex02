@@ -55,7 +55,7 @@ public class BoardServiceTests {//테스트에서는 생성자주입 !!절대 !!
 	
 	@Test
 	public void testCount() {
-		service.count();
+		service.count(null);
 	}
 	
 	@Test

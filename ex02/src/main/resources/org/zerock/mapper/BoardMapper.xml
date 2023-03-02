@@ -4,6 +4,25 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 세미콜론 절대 주의!!!!쓰지마시오 -->
 <mapper namespace="org.zerock.mapper.BoardMapper">
+<sql id="criteria">
+         <trim prefix="(" suffix=") and" prefixOverrides="or">
+         	<foreach collection="typeArr" item="type1">
+	         	<trim prefix="or">
+    		     	<choose>
+						<when test='type1=="T"'>
+						title like '%'||#{keyword}||'%'
+						</when>         	
+						<when test='type1=="C"'>
+						content like '%'||#{keyword}||'%'
+						</when>         	
+						<when test='type1=="W"'>
+						writer like '%'||#{keyword}||'%'
+						</when>         	
+      			   	</choose>
+     	    	</trim>
+         	</foreach>
+         </trim>
+</sql>
 	
 	<select id="getList" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[ 
@@ -14,11 +33,18 @@
 		 ]]>
 		 
 	</select>
+	
 	<select id="getListWithiPaging" resultType="org.zerock.domain.BoardVO">
 	<![CDATA[ 
  	select bno, title, writer, regdate, updatedate, visit
 		from(select /*+ INDEX_ASC(tbl_board TBL_BOARD_INDEX1)*/ rownum rn, bno, title, writer, regdate, updatedate, visit
-         from tbl_board where rownum<=#{pageNum} *#{amount}) 
+         from tbl_board where
+         ]]>
+         
+         <include refid="criteria"></include>
+     
+         <![CDATA[ 
+          rownum<=#{pageNum} *#{amount}) 
 		where rn>(#{pageNum}-1)* #{amount} 
 		 ]]>
 	</select>
@@ -63,7 +89,10 @@
 	</select>
 
 	<select id="count" resultType="long">
-		select count(*) from TBL_BOARD
+		select count(*) from TBL_BOARD where
+	<include refid="criteria"></include>
+	bno > 0
+
 	</select>
 
 	<select id="todayCount" resultType="long">

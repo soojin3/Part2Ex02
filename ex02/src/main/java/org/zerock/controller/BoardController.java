@@ -44,7 +44,7 @@ public class BoardController {
 		//1. 최초에 테이블 개수 한번 읽기
 		//2. 이후에는 어차피 테이블 개수는 늘어날테니 그 값 이상일때만 
 		
-		model.addAttribute(new PageDTO(service.count(),cri));//리턴타입의 classDTO를 봐라, 이름을 적어 보내지 않아도 이름이 같다
+		model.addAttribute(new PageDTO(service.count(cri),cri));//리턴타입의 classDTO를 봐라, 이름을 적어 보내지 않아도 이름이 같다
 		
 		
 	}
@@ -100,9 +100,9 @@ public class BoardController {
 	}
 
 	@GetMapping("/count")
-	public void count(Model model, Long bno) {
+	public void count(Model model, Long bno, Criteria cri) {
 		log.info("count...");
-		model.addAttribute("bno", service.count());
+		model.addAttribute("bno", service.count(cri));
 	}
 
 	@GetMapping("/rank")

@@ -29,7 +29,7 @@ public interface BoardService {
 		BoardVO get(Long bno);
 		
 		//보너스 - 전체글 개수를 알려주는 서비스
-		Long count();
+		Long count(Criteria cri);
 		
 		//오늘의 게시글 수
 		Long todayCount();
@@ -46,4 +46,6 @@ public interface BoardService {
 		//boolean visit(Long bno);
 		
 		Long visit();
+
+	//	Long count(Criteria cri);
 }

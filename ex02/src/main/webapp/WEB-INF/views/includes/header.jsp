@@ -286,7 +286,12 @@ button {
                             <i class="fa fa-bars"></i>
                         </button>
                     </form>
- <select id="choice">
+
+                    <!-- Topbar Search -->
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    
+                        <div class="input-group">
+             <select id="choice" class="form-control bg-light border-0 small">
             <option <c:if test="${pageDTO.cri.amount==5}"> selected </c:if> value="5">제목</option>
             <option <c:if test="${pageDTO.cri.amount==10}"> selected </c:if> value="10">내용</option>
             <option <c:if test="${pageDTO.cri.amount==20}"> selected </c:if> value="20">작성자</option>
@@ -295,12 +300,9 @@ button {
             <option <c:if test="${pageDTO.cri.amount==30}"> selected </c:if> value="30">내용/작성자</option>
             <option <c:if test="${pageDTO.cri.amount==30}"> selected </c:if> value="30">제목/내용/작성자</option>
         </select>
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    
-                        <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="검색할 내용 검색"
                                 aria-label="Search" aria-describedby="basic-addon2">
+               <!-- 테스트하는 방법  /board/list?type=T&keyword=테 -->
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>

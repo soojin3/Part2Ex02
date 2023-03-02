@@ -89,7 +89,7 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testcount() {//전체 글 개수 확인 (메소드 이름:count)
-		mapper.count();
+		mapper.count(null);
 	}
 	
 	@Test

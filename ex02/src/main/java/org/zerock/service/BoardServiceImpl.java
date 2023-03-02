@@ -74,9 +74,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public Long count() {
+	public Long count(Criteria cri) {
 		log.info("count");
-		return mapper.count();
+		return mapper.count(cri);
 	}
 	
 	@Override

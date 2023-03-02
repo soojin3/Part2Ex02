@@ -39,7 +39,7 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	int myInsert(BoardVO vo);
 	
 	//전체 글 개수 확인 
-	Long count();
+	Long count(Criteria cri);//원래 괄호가 비었는데 추가한 이유는 검색한 조건으로 페이지 조건 나오도록
 	
 	//오늘의 게시글 수
 	Long todayCount();
