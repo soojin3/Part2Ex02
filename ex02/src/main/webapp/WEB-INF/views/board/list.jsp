@@ -16,15 +16,17 @@
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">게시글 목록 보기</h6>
 			<a href="/board/register" class="w-btn w-btn-blue"
-				style="float: right;"> 글쓰기 </a>
-				글 보기 개수 선택
-		<select id="amount">
-            <option <c:if test="${pageDTO.cri.amount==5}"> selected </c:if> value="5">5</option>
-            <option <c:if test="${pageDTO.cri.amount==10}"> selected </c:if> value="10">10</option>
-            <option <c:if test="${pageDTO.cri.amount==20}"> selected </c:if> value="20">20</option>
-            <option <c:if test="${pageDTO.cri.amount==30}"> selected </c:if> value="30">30</option>
-        </select>
-        
+				style="float: right;"> 글쓰기 </a> 글 보기 개수 선택 <select id="amount">
+				<option <c:if test="${pageDTO.cri.amount==5}"> selected </c:if>
+					value="5">5</option>
+				<option <c:if test="${pageDTO.cri.amount==10}"> selected </c:if>
+					value="10">10</option>
+				<option <c:if test="${pageDTO.cri.amount==20}"> selected </c:if>
+					value="20">20</option>
+				<option <c:if test="${pageDTO.cri.amount==30}"> selected </c:if>
+					value="30">30</option>
+			</select>
+
 		</div>
 
 		<div class="card-body">
@@ -57,8 +59,10 @@
 									${no=no+1 }</td>
 								<td>${board.bno }</td>
 								<!-- 글 삭제시에 진짜 글 번호가 필요하다 -->
-								<td><a href="/board/get?bno=${board.bno }&pageNum=${pageDTO.cri.pageNum}&amount=${pageDTO.cri.amount }">
-								<c:out value="${board.title }"></c:out></a></td>
+								<td><a
+									href="/board/get?bno=${board.bno }&pageNum=${pageDTO.cri.pageNum}&amount=${pageDTO.cri.amount }">
+										<c:out value="${board.title }"></c:out>
+								</a></td>
 								<td>${board.visit }</td>
 
 								<c:if test="${board.regdate==board.updatedate }">
@@ -83,57 +87,36 @@
 					</tbody>
 				</table>
 			</div>
-		<nav aria-label="...">
-  <ul class="pagination">
-      <c:if test="${pageDTO.prev }">
-    <li class="page-item disabled"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Previous</a></li>
-    </c:if>
-    
-    <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">    
-        <c:if test="${pageDTO.cri.pageNum ==num }">
-        <li class="page-item active">        
-      	<a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
-        <b>${num }</b> </a></li>
-        </c:if>
-		<c:if test="${pageDTO.cri.pageNum !=num }">
-		<li class="page-item"> 
-		<a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
-		<b>${num }</b> </a></li>
-		</c:if>		
-     </c:forEach>
-     
- <%--     <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
-    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
-    <c:if test="${pageDTO.cri.pageNum ==num }"><b class="page-link">${num }</b></c:if>
-	<c:if test="${pageDTO.cri.pageNum !=num }"><b>${num }</b></c:if></a></li>
-    </c:forEach> --%>
-    
-    <c:if test="${pageDTO.next }">
-    <li class="page-item">
-      <a class="page-link" href="/board/list?pageNum=${pageDTO.endPage+1 }&amount=${pageDTO.cri.amount}">Next</a>
-    </li>
-     </c:if>
-  </ul>
-</nav>
-			현재 페이지는 ${pageDTO.cri.pageNum	 }
-			<nav aria-label="Page navigation example">
-  <ul class="pagination">
-  <c:if test="${pageDTO.prev }">
-    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Previous</a></li>
-    </c:if>
-    
-    <c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }" var="num">
-    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">
-    <c:if test="${pageDTO.cri.pageNum ==num }"><b>${num }</b></c:if>
-			<c:if test="${pageDTO.cri.pageNum !=num }"><b>${num }</b></c:if>
-			</a></li>
-    </c:forEach>
-    
-    <c:if test="${pageDTO.next }">
-    <li class="page-item"><a class="page-link" href="/board/list?pageNum=${pageDTO.endPage+1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Next</a></li>
-    </c:if>
-  </ul>
-</nav>
+			<nav aria-label="...">
+				현재 페이지는 ${pageDTO.cri.pageNum	 }
+				<ul class="pagination">
+					<c:if test="${pageDTO.prev }">
+						<li class="page-item"><a class="page-link"
+							href="/board/list?pageNum=${pageDTO.startPage-1 }&amount=${pageDTO.cri.amount}&keyword=${pageDTO.cri.keyword}&type=${pageDTO.cri.type}">Previous</a></li>
+					</c:if>
+					<c:forEach begin="${pageDTO.startPage }" end="${pageDTO.endPage }"
+						var="num">
+						<c:if test="${pageDTO.cri.pageNum ==num }">
+							<li class="page-item active"><a class="page-link"
+								href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
+									<b>${num }</b>
+							</a></li>
+						</c:if>
+						<c:if test="${pageDTO.cri.pageNum !=num }">
+							<li class="page-item"><a class="page-link"
+								href="/board/list?pageNum=${num }&amount=${pageDTO.cri.amount}">
+									<b>${num }</b>
+							</a></li>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${pageDTO.next }">
+						<li class="page-item"><a class="page-link"
+							href="/board/list?pageNum=${pageDTO.endPage+1 }&amount=${pageDTO.cri.amount}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</nav>
 		</div>
 	</div>
 
@@ -169,13 +152,16 @@
 			}
 		}
 	}
-	
+
 	//2. 뒤로가기 확인을 위해 표시해 두기(history.replaceState(,,))
 	history.replaceState({}, null, null);
-	
-	$("#amount").change(function(e){
-					//on("chage"),function(e){})같은 표현식
-					//on("click"),function(e){})같은 표현식
-		location.href="/board/list?pageNum=${pageDTO.cri.pageNum}&amount="+$("#amount").val();
-	});
+
+	$("#amount")
+			.change(
+					function(e) {
+						//on("chage"),function(e){})같은 표현식
+						//on("click"),function(e){})같은 표현식
+						location.href = "/board/list?pageNum=${pageDTO.cri.pageNum}&amount="
+								+ $("#amount").val();
+					});
 </script>
