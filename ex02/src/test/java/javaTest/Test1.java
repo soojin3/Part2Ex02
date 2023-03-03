@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.Test;
 import org.zerock.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 @Log4j
-public class Test {
+public class Test1 {
 	
-	@org.junit.Test
+	@Test
 	public void testList() {
 		List<String> list = new ArrayList<>();
 		list.add("지금은");
@@ -25,7 +26,7 @@ public class Test {
 		log.info(list);
 	}
 	
-	@org.junit.Test
+	@Test
 	public void testMap() {// ==> 테스트 방법 board/list?type=T&keyword=테
 		Map<String, String> map = new HashMap<>();
 		map.put("T", "TTT");
