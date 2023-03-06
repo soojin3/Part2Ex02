@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ChartWriterRank;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.PageDTO;
@@ -120,6 +122,21 @@ public class BoardController {
 		model.addAttribute("list", list);
 		// model.addAttribute("rankList",service.rankList());
 
+	}
+	@GetMapping("/chart")
+	public void chart(Model model) {
+		//views/board/chart.jsp
+		ChartWriterRank chartwriterank = service.chartWriterRank();
+		String mylabels="[";
+		for(String labels : chartwriterank.getMylabels()) {
+			mylabels += "\""+labels + "\",";
+		}
+		mylabels = mylabels.substring(0, mylabels.length()-1)+"]";//마지막에..
+		log.info("잘 만들었나"+mylabels);
+		//jsp데이터 보내기
+		//배열을 만들어서 보내기
+		model.addAttribute("mylabels",mylabels);
+		model.addAttribute("mydata",Arrays.toString(chartwriterank.getMydata()));
 	}
 
 }

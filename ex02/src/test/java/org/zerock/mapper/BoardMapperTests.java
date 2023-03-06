@@ -122,5 +122,10 @@ public class BoardMapperTests {
 		mapper.getListWithiPaging(new Criteria(2,10)).forEach(vo -> log.info(vo));
 		
 	}
+	
+	@Test
+	public void testWriterRank(){
+		mapper.writerRank().forEach(vo -> log.info(vo));
+	}
 
 }

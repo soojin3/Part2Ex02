@@ -1,5 +1,6 @@
 package org.zerock.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,11 @@ import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ChartWriterRank;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
+import org.zerock.domain.WriterRank;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -123,6 +126,30 @@ public class BoardServiceImpl implements BoardService {
 	public Long visit() {
 		log.info("visiter...");
 		return mapper.visit();
+	}
+
+	@Override
+	public ChartWriterRank chartWriterRank() {
+		List<WriterRank> list= mapper.writerRank(); 
+		//원하는 데이터 형식으로 변형 시키기 
+		//1. 리턴할 객체를 생성
+		ChartWriterRank chartWriterRank = new ChartWriterRank();
+		//2. 리턴할 객체에 값 세팅
+		//3. 문자열 배열과 숫자 배열 생성
+		String[] mylabels = new String[5];
+		int[] mydata = new int[5];
+		//4. 각각의 배열에 값 매핑 후 리턴할 객체에 넣어줌
+		int i=0;
+		for(WriterRank rank:list) {
+			mylabels[i]=rank.getWriter();
+			mydata[i]=rank.getCn();
+			i++;
+		}
+		log.info("작성자들 "+mylabels);
+		log.info("갯수들 "+mydata);
+		chartWriterRank.setMylabels(mylabels);
+		chartWriterRank.setMydata(mydata);
+		return chartWriterRank;
 	}
 
 }

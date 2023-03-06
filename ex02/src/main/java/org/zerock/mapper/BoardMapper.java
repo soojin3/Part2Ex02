@@ -7,6 +7,7 @@ import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
+import org.zerock.domain.WriterRank;
 
 public interface BoardMapper {//인터페이스는 언제나 public 이다. 
 	
@@ -54,6 +55,9 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	Long visit();
 
 	//Long visitUp(Long bno);
+	
+	//5등까지 글쓴이 등록글 가져오기
+	List<WriterRank> writerRank();//바뀔 내용이 없기 때문에 안에 들어가는 것 없음
 
 	
 

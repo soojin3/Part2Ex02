@@ -3,6 +3,7 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ChartWriterRank;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.LastVO;
 import org.zerock.domain.RankVO;
@@ -28,7 +29,7 @@ public interface BoardService {
 		//5. 게시글 읽기
 		BoardVO get(Long bno);
 		
-		//보너스 - 전체글 개수를 알려주는 서비스
+		//전체글 개수를 알려주는 서비스
 		Long count(Criteria cri);
 		
 		//오늘의 게시글 수
@@ -46,6 +47,7 @@ public interface BoardService {
 		//boolean visit(Long bno);
 		
 		Long visit();
-
-	//	Long count(Criteria cri);
+		
+		//차트용 랭킹 서비스
+		ChartWriterRank chartWriterRank();//5등으로 정해져 있기 때문에 파라메터 넣어줄 필요 없ㅎ음
 }

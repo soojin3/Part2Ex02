@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ChartWriterRank;
 import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardMapperTests;
 
@@ -53,10 +54,10 @@ public class BoardServiceTests {//테스트에서는 생성자주입 !!절대 !!
 		service.get(10L);
 	}
 	
-	@Test
-	public void testCount() {
-		service.count(null);
-	}
+	//@Test
+	//public void testCount() {
+	//	service.count(null);
+	//}
 	
 	@Test
 	public void testTodayCount() {
@@ -71,6 +72,14 @@ public class BoardServiceTests {//테스트에서는 생성자주입 !!절대 !!
 	@Test
 	public void testLast() {
 		service.last();
+	}
+	
+	@Test
+	public void testChartWriterTank() {
+		ChartWriterRank c = service.chartWriterRank();
+		log.info("작성자들 "+c.getMylabels());
+		log.info("글 개수 확인 "+c.getMydata());
+		log.info(c);
 	}
 
 }

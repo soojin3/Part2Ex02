@@ -112,5 +112,13 @@
 		update TBL_BOARD set VISIT =#{visit}+1 where bno=#{bno}
 	</update>
 	
+	<select id="writerRank" resultType="org.zerock.domain.WriterRank">
+	  <![CDATA[ 
+	select writer, cn
+	from (select writer, count(*) cn from tbl_board group by writer order by cn desc)
+	where rownum < 6
+	 ]]>
+	</select>
+	
 	
 </mapper>
