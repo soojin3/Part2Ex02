@@ -138,5 +138,10 @@ public class BoardController {
 		model.addAttribute("mylabels",mylabels);
 		model.addAttribute("mydata",Arrays.toString(chartwriterank.getMydata()));
 	}
+	
+	@GetMapping("/chart2")//기본화면만 보내고 ajax로 처리하기
+	public void chart2() {
+		
+	}
 
 }

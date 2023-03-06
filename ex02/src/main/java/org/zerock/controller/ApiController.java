@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.ChartWriterRank;
 import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
 
@@ -75,6 +76,11 @@ public class ApiController {
 			//System.out.println(bno);
 		}
 		return list;
+	}
+	
+	@GetMapping("/api/board/chart")
+	public ChartWriterRank chart() {
+		return bs.chartWriterRank();
 	}
 
 }

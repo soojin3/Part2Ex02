@@ -243,6 +243,12 @@ button {
                     </div>
                 </div>
             </li>
+			<!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="/board/chart2">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>작성자 순위 보기</span></a>
+            </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
@@ -411,9 +417,8 @@ button {
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler Â· 58m</div>
+                                        <div class="text-truncate">야 점심 뭐 먹냐</div>
+                                        <div class="small text-gray-500">임나영· 58m</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -435,9 +440,8 @@ button {
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez Â· 2d</div>
+                                        <div class="text-truncate">수진쓰 그게 중요한게 아니야</div>
+                                        <div class="small text-gray-500">김소희· 2d</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">

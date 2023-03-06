@@ -1,3 +1,6 @@
+function mychart(){//함수로 만들어서 필요할때 쓸 수 있도록 한다.
+	
+
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -33,5 +36,6 @@ var myPieChart = new Chart(ctx, {
       display: false
     },
     cutoutPercentage: 80,
-  },
+  }
 });
+}
