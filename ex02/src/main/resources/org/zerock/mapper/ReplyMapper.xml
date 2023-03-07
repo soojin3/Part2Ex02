@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 세미콜론 절대 주의!!!!쓰지마시오 -->
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+
+
+</mapper>

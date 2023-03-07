@@ -51,9 +51,13 @@ var mydata=${mydata};
 </script>
     
 <script src="/resources/js/demo/chart-pie-demo.js"></script>
-<script src="/resources/js/demo/chart-bar-demo.js"></script>
-
 <script>
 mychart();
 </script>
+
+<script src="/resources/js/demo/chart-bar-demo.js"></script>
+<script>
+mychart();
+</script>
+
 </html>

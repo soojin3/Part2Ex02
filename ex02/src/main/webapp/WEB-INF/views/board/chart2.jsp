@@ -28,6 +28,20 @@
 				<canvas id="myPieChart"></canvas>
 			</div>
 		</div>
+		  <!-- Bar Chart -->
+                      <div class="card shadow mb-4">
+                         <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                         </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                              <canvas id="myBarChart"></canvas>
+                         </div>
+                       <hr>
+                                    Styling for the bar chart can be found in the
+                                    <code>/js/demo/chart-bar-demo.js</code> file.
+                         </div>
+                                </div>
 	</div>
 </body>
 <%@include file="../includes/footer.jsp"%>
@@ -74,6 +88,7 @@ $.ajax({
 			mydata = data.mydata;
 		//아래 함수가 데이터 변할때
 			mychart();
+			mychart2();
 		}
 		
 		console.log("가져온데이터",mylabels,mydata)
@@ -88,4 +103,6 @@ $.ajax({
 </script>
 <script src="/resources/js/demo/chart-pie-demo.js"></script>
 
+
+<script src="/resources/js/demo/chart-bar-demo.js"></script>
 </html>
