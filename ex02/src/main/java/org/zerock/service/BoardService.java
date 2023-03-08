@@ -46,7 +46,7 @@ public interface BoardService {
 		//조회수(동작 여부 확인)
 		//boolean visit(Long bno);
 		
-		//Not yet
+		//글 번호 더해줌; 고치기
 		//Long visit(BoardVO boardVO);
 		void visit(Long bno);
 		

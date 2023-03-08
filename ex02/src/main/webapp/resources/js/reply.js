@@ -16,7 +16,7 @@ var replyService=(function(){
 			contentType:"application/json;charset=utf-8",
 			success:function(data){//성공시(200)success
 				if(callback)//자바스크립트는 널이 아니면 무조건 트루이므로 그냥 두기만 해도 성공
-				callback(data);//콜백함수로 처리할 내용 넣어줌
+					callback(data);//콜백함수로 처리할 내용 넣어줌
 				
 			},
 			error:function(xhr,status,er){//function(xhr,status,error)3개가 이 순서대로 들어간다

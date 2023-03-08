@@ -47,10 +47,9 @@
 			 
          <span id="reply"></span>
          <br>
-			작성자: <input type="text" placeholder="작성자" style="width:100px; height:23px;"><br>
-			댓글 내용: <input type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
-           
-                 	<input type="button" value="댓글 등록" id="replydelButton">
+			작성자: <input id="replyerdata" type="text" placeholder="작성자" style="width:100px; height:23px;"><br>
+			댓글 내용: <input id="replydata" type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
+           <button class="w-btn w-btn-pink" id="replyInsert" style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>댓글 등록</button>
 		</div>
 		</div>
 	</div>
@@ -65,8 +64,12 @@
 <script src="/resources/js/reply.js?ver=1">
 </script>
 <script>
+
 //리플 목록을 가져와서 화면에 뿌려주기
 $(document).ready(function(){
+	show();
+	function show(){
+		
 	console.log("리플 내용")
 	replyService.getList(${board.bno},function(data){
 		//data에 리플 내요잉 들어있다
@@ -76,18 +79,61 @@ $(document).ready(function(){
 		console.log(len);
 		for(var i=0;i<len;i++){
 			htmlString+="<b>"+(i+1)+"."+data[i].reply+"</b> -"+data[i].replyer+"("+data[i].updatedate+") <button class='w-btn w-btn-pink' id='replydelButton' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button><br><hr>" 
-// 		    style="
-// 		        padding-top: 9px;
-// 		        padding-bottom: 8px;
-// 		        padding-left: 9px;
-// 		        padding-right: 9px;
-// 		    "
+
 		}
 		console.log("리플 만들어줘 ",htmlString)
 		$("#reply").html(htmlString);
 	});
+	}
+	
+	//리플 작성버튼을 클릭했을때 수행하는 작업(1. 댓글 등록 2. 댓글 목록 가져오기)
+	$("#replyInsert").on("click",function(){    
+		console.log("리플작성버튼 클릭");
+		
+		var bnodata=${board.bno};
+		var replydata=$("#replydata").val();
+		var replyerdata=$("#replyerdata").val();
+		console.log("리플입력값",bnodata,replydata,replyerdata);
+		if(replydata && replyerdata ){ //작성내용이 있을때만 동작해라~
+			replyService.add({bno:bnodata ,reply:replydata ,replyer:replyerdata },function(data){
+				//alert(data);
+				show();	// 위치가 여기인 이유는 자바스크립트가 ajax,time 관련해서는 비동기처리되기 때문에
+			} ); //콜백함수
+			//작성내용 비우기
+		$("#replydata").val("");
+		$("#replyerdata").val("");
+		}else{
+			alert("댓글과 작성자를 모두 입력해주세요");
+		}
+		
+	});
+	
 	
 });
+// 	$("#replyInsert").on("click",function(){
+// 		//수행할 내용 적기
+// 		console.log("리플작성버튼 클릭");
+		
+// 		var bnodata=${board.bno};
+// 		var replydata=$("replydata").val();
+// 		var replyerdata=$("replyerdata").val();
+// 		console.log("리플입력값 ",bnodata, replydata,replyerdata);
+// 		if(replydata && replerdata){//작성 내용이 있을때만 동작해라
+// 		replyService.add({bno:bnodata ,reply:replydata , replyer:replyerdata },function(data){
+// 			//alert(data);
+// 			show();//위치가 여기인 이유는 자바스크립트가 ajax,time관련해서는 비동기처리되기 때문
+// 		});//콜백함수
+// 		}
+			
+// 		//작성내용 비우기
+// 		$("replydata").val("");
+// 		$("replyerdata").val("");
+// 	}else{
+// 		alert("댓글과 작성자를 모두 입력해 주세요")
+// 	}
+// 	);
+	
+// });
 
 </script>
 <script>
