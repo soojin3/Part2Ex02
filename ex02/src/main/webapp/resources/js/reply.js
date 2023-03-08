@@ -132,7 +132,11 @@ var replyService=(function(){
 			var hours = nowtime.getHours();
 			//var minutes = nowtime.Minutes();
 			var before=hours-hh;
+			if(before==0){
+				return "방금";
+			}else{
 				return before+" 시간 전";
+			}
 		}else{
 			var week_array = new Array('일', '월', '화', '수', '목', '금', '토');
 			

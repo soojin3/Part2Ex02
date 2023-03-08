@@ -19,56 +19,67 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-					<div class="form-group">
-						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail"  name="title" value="${board.title }" readonly>
-					</div>
-					<div class="form-group">
-						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail"  name="writer" value="${board.writer }" readonly>
-					</div>
-					<div class="form-group">
-						<textarea rows="10" class="form-control form-control-user"
-							id="exampleInputEmail" name="content" readonly>${board.content }</textarea>
-					</div>
+				<div class="form-group">
+					<input type="text" class="form-control form-control-user"
+						id="exampleInputEmail" name="title" value="${board.title }"
+						readonly>
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control form-control-user"
+						id="exampleInputEmail" name="writer" value="${board.writer }"
+						readonly>
+				</div>
+				<div class="form-group">
+					<textarea rows="10" class="form-control form-control-user"
+						id="exampleInputEmail" name="content" readonly>${board.content }</textarea>
+				</div>
 				<form action="/board/remove" method="post" id="delForm">
-               		<input type="hidden" name="bno" value="${board.bno}">
-               		<input type="hidden" name="delKey" id="delKey">
-               		<input type="hidden" name="pageNum" value="${cri.pageNum }">
-               		<input type="hidden" name="amount" value="${cri.amount }">
-                 	<input class="w-btn w-btn-pink"   type="button" value=" 삭제하기 " id="delButton">
-				<a href="/board/list?pageNum=${cri.pageNum }&amount=${cri.amount}" class="w-btn w-btn-blue"> 목록으로 돌아가기 </a>
-				<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}" class="w-btn w-btn-blue"> 수정 </a>
-                 </form>
+					<input type="hidden" name="bno" value="${board.bno}"> <input
+						type="hidden" name="delKey" id="delKey"> <input
+						type="hidden" name="pageNum" value="${cri.pageNum }"> <input
+						type="hidden" name="amount" value="${cri.amount }"> <input
+						class="w-btn w-btn-pink" type="button" value=" 삭제하기 "
+						id="delButton"> <a href="/board/list?pageNum=${cri.pageNum }&amount=${cri.amount}"
+						class="w-btn w-btn-blue"> 목록으로 돌아가기 </a> <a
+						href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}"
+						class="w-btn w-btn-blue"> 수정 </a>
+				</form>
 			</div>
 			<div class="card-header py-3">
-			<h6>Comment List (Total <span id="replyCount"></span>)</h6>
-			<hr>
-			<span id="reply"></span>
-		</div>
+				<h6>
+					Comment List (Total <span id="replyCount"></span>)
+				</h6>
+				
+				<span id="replyAll"></span>
+			</div>
+				
+				<hr>
+				<span id="reply"></span>
 			<div>
-			<br>
-			<div class="table-responsive">
-			 
-         <span id="reply"></span>
-         <br>
-			작성자: <input class="form-control form-control-user" id="replyerdata" type="text" placeholder="작성자" style="width:100px; height:23px;"> 
-			댓글 내용: <input class="form-control form-control-user" id="replydata" type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
-           <button class="w-btn w-btn-pink" id="replyInsert" style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>댓글 등록</button>
-		</div>
+				<br>
+<!-- 				<div class="table-responsive" > -->
+
+					<span id="reply"></span> <br> 작성자: <input
+						class="form-control form-control-user" id="replyerdata"
+						type="text" placeholder="작성자" style="width: 100px; height: 23px;">
+					댓글 내용: <input class="form-control form-control-user" id="replydata"
+						type="text" placeholder="댓글을 입력해 주세요"
+						style="width: 500px; height: 50px;"><br>
+					<button class="w-btn w-btn-pink" id="replyInsert"
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>댓글
+						등록</button>
+<!-- 				</div> -->
+			</div>
 		</div>
 	</div>
-		<div>
-		</div>	
-		</div>	
-		
+
 	<!-- /.container-fluid -->
-	
-<!-- End of Main Content -->
-<%@include file="../includes/footer.jsp"%>
-<script src="/resources/js/reply.js?ver=1">
+
+	<!-- End of Main Content -->
+	<%@include file="../includes/footer.jsp"%>
+	<script src="/resources/js/reply.js?ver=1">
 </script>
-<script>
+	<script>
 
 //리플 목록을 가져와서 화면에 뿌려주기
 $(document).ready(function(){
@@ -88,10 +99,12 @@ $(document).ready(function(){
 			htmlString+="<b>"+(i+1)+". "+data[i].replyer+"</b>  "+"("+
 					replyService.time('<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.regdate}"/>'
 				,data[i].updatedate)
-			+") <button class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
+			+") <button id='modButton'class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button> <button id ='delButton' value='"+data[i].rno+"' class='w-btn w-btn-blue' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>삭제</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
 
 		}
-		console.log("리플 만들어줘 ",htmlString)
+		console.log("리플 만들어줘 ",htmlString);
+		$("#replyAll").html(htmlString);
+		
 		$("#reply").html(htmlString);
 	});
 	}
@@ -120,33 +133,9 @@ $(document).ready(function(){
 	
 	
 });
-// 	$("#replyInsert").on("click",function(){
-// 		//수행할 내용 적기
-// 		console.log("리플작성버튼 클릭");
-		
-// 		var bnodata=${board.bno};
-// 		var replydata=$("replydata").val();
-// 		var replyerdata=$("replyerdata").val();
-// 		console.log("리플입력값 ",bnodata, replydata,replyerdata);
-// 		if(replydata && replerdata){//작성 내용이 있을때만 동작해라
-// 		replyService.add({bno:bnodata ,reply:replydata , replyer:replyerdata },function(data){
-// 			//alert(data);
-// 			show();//위치가 여기인 이유는 자바스크립트가 ajax,time관련해서는 비동기처리되기 때문
-// 		});//콜백함수
-// 		}
-			
-// 		//작성내용 비우기
-// 		$("replydata").val("");
-// 		$("replyerdata").val("");
-// 	}else{
-// 		alert("댓글과 작성자를 모두 입력해 주세요")
-// 	}
-// 	);
-	
-// });
 
 </script>
-<script>
+	<script>
 //리플등록테스트(자바스크립트객체를 이용해야 json포맷으로 변환해줌 쌍따옴표 금지)
 // replyService.add({reply:"리플내용..",replyer:"작성자",bno:229},function(data){
 // 	alert("결과확인"+data);
@@ -169,7 +158,7 @@ $(document).ready(function(){
 }) */
 </script>
 
-<script>
+	<script>
 /* 
  * 확인창을 이용한 확인 처리
  $(document).ready(function(){ 
@@ -216,18 +205,35 @@ $(document).ready(function(){
 });
 
 //댓글 수정을 위한 버튼
-$("#reply").on("click",function(){
+$("#reply").on("click",function(e){
+	e.preventDefault();
+	//var replyerdata=$("#replyerdata").val();
+	//var replyrno=$("#replyerdata").val();
 	console.log("댓글 수정버튼 누름");
-	var reply=$(this);
-	console.log("댓글 수정 버튼 클릭",reply.clickb().text());
-	$(this).parent().html('<input id="replydata" type="text" value="'+
-			reply.parent().find(".replydata").text()+
-			'" style="width: 50%"> <input id="replyerdata" type="text" placeholder="'+
-			reply.parent().children(".replyerdata").text()+
-			'" > <button id="replyInsert" class="btn btn-secondary btn-icon-split">변경하기</button> <button id="replyInsert" class="btn btn-secondary btn-icon-split">삭제하기</button><br>');
-	
-});
+	console.log(replydata);
+	//var reply=$(this);
+	//console.log("댓글 수정 버튼 클릭",reply.clickb().text());
+
 //	var replyerdata=$("#replyerdata").val();
+
+// replyService.modify({rno:46,reply:"4교시",replyer:"2나그네"},function(data){
+// 	alert("46번 수정함~",data)
+// })
+
+});
+
+//리플의 삭제하기 버튼을 클릭했을때
+//댓글 삭제
+	$("#replyAll").on("click","#delButton",function(){
+		console.log("삭제할 댓글 번호",$(this).val());
+		var delCheck= confirm("댓글을 삭제하시겠습니까?");
+		if(delCheck){
+			replyService.remove($(this).val(),function(data){
+				show();
+		});
+	});
+	
+	
 });
 
 </script>
