@@ -41,14 +41,19 @@
 				<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}" class="w-btn w-btn-blue"> 수정 </a>
                  </form>
 			</div>
+			<div class="card-header py-3">
+			<h6>Comment List (Total <span id="replyCount"></span>)</h6>
+			<hr>
+			<span id="reply"></span>
+		</div>
 			<div>
 			<br>
 			<div class="table-responsive">
 			 
          <span id="reply"></span>
          <br>
-			작성자: <input id="replyerdata" type="text" placeholder="작성자" style="width:100px; height:23px;"><br>
-			댓글 내용: <input id="replydata" type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
+			작성자: <input class="form-control form-control-user" id="replyerdata" type="text" placeholder="작성자" style="width:100px; height:23px;"> 
+			댓글 내용: <input class="form-control form-control-user" id="replydata" type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
            <button class="w-btn w-btn-pink" id="replyInsert" style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>댓글 등록</button>
 		</div>
 		</div>
@@ -77,8 +82,13 @@ $(document).ready(function(){
 		var htmlString="";
 		console.log(data);
 		console.log(len);
+		console.log("게시글 작성시간 확인 ",'${board.regdate}');
 		for(var i=0;i<len;i++){
-			htmlString+="<b>"+(i+1)+"."+data[i].reply+"</b> -"+data[i].replyer+"("+data[i].updatedate+") <button class='w-btn w-btn-pink' id='replydelButton' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button><br><hr>" 
+		//var day=new Date(data[i].updatedate);
+			htmlString+="<b>"+(i+1)+". "+data[i].replyer+"</b>  "+"("+
+					replyService.time('<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.regdate}"/>'
+				,data[i].updatedate)
+			+") <button class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
 
 		}
 		console.log("리플 만들어줘 ",htmlString)
@@ -204,4 +214,20 @@ $(document).ready(function(){
 		}
 	})
 });
+
+//댓글 수정을 위한 버튼
+$("#reply").on("click",function(){
+	console.log("댓글 수정버튼 누름");
+	var reply=$(this);
+	console.log("댓글 수정 버튼 클릭",reply.clickb().text());
+	$(this).parent().html('<input id="replydata" type="text" value="'+
+			reply.parent().find(".replydata").text()+
+			'" style="width: 50%"> <input id="replyerdata" type="text" placeholder="'+
+			reply.parent().children(".replyerdata").text()+
+			'" > <button id="replyInsert" class="btn btn-secondary btn-icon-split">변경하기</button> <button id="replyInsert" class="btn btn-secondary btn-icon-split">삭제하기</button><br>');
+	
+});
+//	var replyerdata=$("#replyerdata").val();
+});
+
 </script>

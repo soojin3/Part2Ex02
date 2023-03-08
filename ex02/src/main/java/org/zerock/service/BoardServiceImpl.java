@@ -123,7 +123,7 @@ public class BoardServiceImpl implements BoardService {
 	//}
 
 	@Override
-	public void visit(Long bno) {
+	public void visit(Long bno,Long visit) {
 		log.info("visiter...");
 		mapper.visit(bno);
 		//return mapper.visit(bno);

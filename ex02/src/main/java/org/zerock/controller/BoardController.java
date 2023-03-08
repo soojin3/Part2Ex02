@@ -71,7 +71,7 @@ public class BoardController {
 	public void get(Long bno, Model model, Criteria cri,Long visit) {
 		log.info("url get...");
 		model.addAttribute("board", service.get(bno));
-		service.visit(bno);//bno번호가 더해짐 수정 완료
+		service.visit(bno,visit);//bno번호가 더해짐 수정 완료
 		//model.addAllAttributes("",service.get(visit));
 		model.addAttribute("cri", cri);//페이지 정보를 유지하기 위해 보냄
 	}

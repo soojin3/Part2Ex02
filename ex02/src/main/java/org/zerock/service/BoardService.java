@@ -48,7 +48,7 @@ public interface BoardService {
 		
 		//글 번호 더해줌; 고치기
 		//Long visit(BoardVO boardVO);
-		void visit(Long bno);
+		void visit(Long bno,Long visit);
 		
 		//차트용 랭킹 서비스
 		ChartWriterRank chartWriterRank();//5등으로 정해져 있기 때문에 파라메터 넣어줄 필요 없ㅎ음

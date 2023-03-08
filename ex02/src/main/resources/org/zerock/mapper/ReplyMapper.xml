@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="getList" resultType="org.zerock.domain.ReplyVO">
-		select * from tbl_reply where bno=#{bno}
+		select * from tbl_reply where bno=#{bno} order by rno
 	</select>
 	
 	<select id="testMybatis" resultType="org.zerock.domain.ReplyVO">
