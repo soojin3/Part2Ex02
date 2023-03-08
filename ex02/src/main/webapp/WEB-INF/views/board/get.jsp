@@ -47,7 +47,7 @@
 			 
          <span id="reply"></span>
          <br>
-			작성자: <input type="text" placeholder="작성자" style="width:100px; height:23px;">
+			작성자: <input type="text" placeholder="작성자" style="width:100px; height:23px;"><br>
 			댓글 내용: <input type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
            
                  	<input type="button" value="댓글 등록" id="replydelButton">
@@ -75,7 +75,7 @@ $(document).ready(function(){
 		console.log(data);
 		console.log(len);
 		for(var i=0;i<len;i++){
-			htmlString+="<b>"+(i+1)+"."+data[i].reply+"</b> -"+data[i].replyer+"("+data[i].updatedate+") <button class='w-btn w-btn-pink' id='replydelButton' style='font-size: 13px; width:100px; height:50px;'>수정</button><br><hr>" 
+			htmlString+="<b>"+(i+1)+"."+data[i].reply+"</b> -"+data[i].replyer+"("+data[i].updatedate+") <button class='w-btn w-btn-pink' id='replydelButton' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button><br><hr>" 
 // 		    style="
 // 		        padding-top: 9px;
 // 		        padding-bottom: 8px;
