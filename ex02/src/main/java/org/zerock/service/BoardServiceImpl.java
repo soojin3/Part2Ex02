@@ -123,9 +123,10 @@ public class BoardServiceImpl implements BoardService {
 	//}
 
 	@Override
-	public Long visit() {
+	public void visit(Long bno) {
 		log.info("visiter...");
-		return mapper.visit();
+		mapper.visit(bno);
+		//return mapper.visit(bno);
 	}
 
 	@Override
@@ -151,5 +152,6 @@ public class BoardServiceImpl implements BoardService {
 		chartWriterRank.setMydata(mydata);
 		return chartWriterRank;
 	}
+
 
 }

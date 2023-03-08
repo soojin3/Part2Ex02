@@ -52,7 +52,7 @@ public interface BoardMapper {//인터페이스는 언제나 public 이다.
 	List<LastVO> last();
 	
 	//방문횟수 세기
-	Long visit();
+	Long visit(Long bno);
 
 	//Long visitUp(Long bno);
 	

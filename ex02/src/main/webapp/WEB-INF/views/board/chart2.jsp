@@ -21,7 +21,7 @@
 			<div class="card-header py-3">
 				<h6 class="m-0 font-weight-bold text-primary">차트 보기</h6>
 				<button id="showtime" class="w-btn w-btn-blue"
-					style="float: right +1;">자동갱신</button>
+					style="float: right +1; display: none;">자동갱신</button>
 				<button id="stop" class="w-btn w-btn-blue" style="float: right;">멈춤</button>
 			</div>
 			<div class="chart-pie pt-4">
@@ -49,6 +49,7 @@
 <script>
 //버튼처리
 $(document).ready(function(){
+		updateChart();
 	$("#showtime").on("click",function(e){
 		console.log("갱신 실행");
 		e.preventDefault();//버튼에 걸린 이벤트 처리 다 취소
@@ -56,6 +57,7 @@ $(document).ready(function(){
 	});	
 	$("#stop").on("click",function(e){
 		e.preventDefault();
+		$("#showtime").show("fast");
 		//갱신멈춤
 		clearTimeout(timerID);//타이머 멈춤 더이상 갱신되지 않는다.
 	});

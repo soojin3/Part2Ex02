@@ -24,7 +24,7 @@
 
 					<input type="hidden" name="bno" value="${board.bno }">
 				    <input type="hidden" name="pageNum" value="${cri.pageNum }">
-				    <script>console.log("테스트중 페이지넘버 : ",${cri.pageNum}); </script>
+				    <script>console.log("테스트중 페이지넘버 : "${cri.pageNum}); </script>
 				    <input type="hidden" name="amount" value="${cri.amount }">
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"

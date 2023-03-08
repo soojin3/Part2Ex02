@@ -41,14 +41,78 @@
 				<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}" class="w-btn w-btn-blue"> 수정 </a>
                  </form>
 			</div>
+			<div>
+			<br>
+			<div class="table-responsive">
+			 
+         <span id="reply"></span>
+         <br>
+			작성자: <input type="text" placeholder="작성자" style="width:100px; height:23px;">
+			댓글 내용: <input type="text" placeholder="댓글을 입력해 주세요" style="width:500px; height:50px;"><br>
+           
+                 	<input type="button" value="댓글 등록" id="replydelButton">
 		</div>
-
+		</div>
 	</div>
+		<div>
+		</div>	
+		</div>	
+		
 	<!-- /.container-fluid -->
-
-</div>
+	
 <!-- End of Main Content -->
 <%@include file="../includes/footer.jsp"%>
+<script src="/resources/js/reply.js?ver=1">
+</script>
+<script>
+//리플 목록을 가져와서 화면에 뿌려주기
+$(document).ready(function(){
+	console.log("리플 내용")
+	replyService.getList(${board.bno},function(data){
+		//data에 리플 내요잉 들어있다
+		len=data.length || 0;
+		var htmlString="";
+		console.log(data);
+		console.log(len);
+		for(var i=0;i<len;i++){
+			htmlString+="<b>"+(i+1)+"."+data[i].reply+"</b> -"+data[i].replyer+"("+data[i].updatedate+") <button class='w-btn w-btn-pink' id='replydelButton' style='font-size: 13px; width:100px; height:50px;'>수정</button><br><hr>" 
+// 		    style="
+// 		        padding-top: 9px;
+// 		        padding-bottom: 8px;
+// 		        padding-left: 9px;
+// 		        padding-right: 9px;
+// 		    "
+		}
+		console.log("리플 만들어줘 ",htmlString)
+		$("#reply").html(htmlString);
+	});
+	
+});
+
+</script>
+<script>
+//리플등록테스트(자바스크립트객체를 이용해야 json포맷으로 변환해줌 쌍따옴표 금지)
+// replyService.add({reply:"리플내용..",replyer:"작성자",bno:229},function(data){
+// 	alert("결과확인"+data);
+// });
+
+// replyService.mytest(3,4)//콘솔로그에 7이 나오도록
+// replyService.getList(229,function(data){
+// 	alert("목록 가져오기 성공")
+// 	console.log("목록",data)
+// })
+// replyService.get(1,function(data){
+// 	alert("가져오기 성공")
+// 	console.log("1번 댓글",data)
+// })
+// replyService.modify({rno:46,reply:"4교시",replyer:"2나그네"},function(data){
+// 	alert("46번 수정함~",data)
+// })
+/* replyService.remove(45,function(data){
+	alert("45번 삭제함 ",data)
+}) */
+</script>
+
 <script>
 /* 
  * 확인창을 이용한 확인 처리

@@ -68,10 +68,11 @@ public class BoardController {
 	}
 
 	@GetMapping("/get")
-	public void get(Long bno, Model model, Criteria cri) {
+	public void get(Long bno, Model model, Criteria cri,Long visit) {
 		log.info("url get...");
-		// service.visit();
 		model.addAttribute("board", service.get(bno));
+		service.visit(bno);
+		//model.addAllAttributes("",service.get(visit));
 		model.addAttribute("cri", cri);//페이지 정보를 유지하기 위해 보냄
 	}
 

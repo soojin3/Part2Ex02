@@ -113,12 +113,12 @@ public class BoardMapperTests {
 	
 	@Test
 	public void visit() {
-		log.info(mapper.visit());
+		log.info(mapper.visit(1L));
 		
 	}
 	
 	@Test
-	public void testGetListWithPaging() {//남다식
+	public void testGetListWithPaging() {//람다식
 		mapper.getListWithiPaging(new Criteria(2,10)).forEach(vo -> log.info(vo));
 		
 	}

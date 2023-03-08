@@ -22,15 +22,15 @@
 				<form action="/board/register" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail" placeholder="제목을 입력해 주세요" name="title">
+							id="exampleTitle" placeholder="제목을 입력해 주세요" name="title">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control form-control-user"
-							id="exampleInputEmail" placeholder="작성자" name="writer">
+							id="exampleWriter" placeholder="작성자" name="writer">
 					</div>
 					<div class="form-group">
 						<textarea rows="10" class="form-control form-control-user"
-							id="exampleInputEmail" placeholder="내용을 입력해 주세요" name="content"></textarea>
+							id="exampleContent" placeholder="내용을 입력해 주세요" name="content"></textarea>
 					</div>
 					<input type="submit" class="w-btn-neon2" value="입력">
 				</form>

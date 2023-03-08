@@ -46,7 +46,9 @@ public interface BoardService {
 		//조회수(동작 여부 확인)
 		//boolean visit(Long bno);
 		
-		Long visit();
+		//Not yet
+		//Long visit(BoardVO boardVO);
+		void visit(Long bno);
 		
 		//차트용 랭킹 서비스
 		ChartWriterRank chartWriterRank();//5등으로 정해져 있기 때문에 파라메터 넣어줄 필요 없ㅎ음
