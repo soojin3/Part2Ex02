@@ -32,5 +32,13 @@
 	select *from tbl_reply where rno in(#{reply.rno},#{rno2})
 	</select>
 	
+	<insert id="tx1">
+	insert into tbl_board(bno,writer,content,title,visit) values(4,'안됨','불가','에러',1)
+	</insert>
+
+	<insert id="tx2">
+	insert into tbl_board(bno,writer,content ,title,visit) values(seq_board.nextval,'성공 ','축하','성공이야',1)
+	</insert>
+	
 	
 </mapper>

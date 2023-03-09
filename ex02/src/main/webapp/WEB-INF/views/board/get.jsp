@@ -41,8 +41,9 @@
 						class="w-btn w-btn-pink" type="button" value=" 삭제하기 "
 						id="delButton"> <a
 						href="/board/list?pageNum=${cri.pageNum }&amount=${cri.amount}"
-						class="w-btn w-btn-blue"> 목록으로 돌아가기 </a> <a
-						href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}"
+						class="w-btn w-btn-blue"> 목록으로 돌아가기 </a> 
+					<a	class="w-btn w-btn-blue"> fake 돌아가기 </a> 
+						<a href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}"
 						class="w-btn w-btn-blue"> 수정 </a>
 						<button class="btn btn-primary">테스트</button>
 				</form>
@@ -56,10 +57,15 @@
 					작성자: <input id="replyerdata"
 						type="text" placeholder="작성자" style="width: 100px; height: 23px;"><br>
 					댓글 내용: <input id="replydata" type="text" placeholder="댓글을 입력해 주세요"
+					
+					
+					
+					
 						style="width: 500px; height: 50px;"><br>
 					<button class="w-btn w-btn-pink" id="replyInsert"
 						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>댓글
 						등록</button>
+						
 				</div>
 			</div>
 		</div>
@@ -89,7 +95,7 @@ $(document).ready(function(){
 			htmlString+="<b>"+(i+1)+". "+data[i].replyer+"</b>  "+"("+
 			replyService.time('<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.regdate}"/>'
 		,data[i].updatedate)
-	+") <button id='modButton'class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button> <button id ='delButton' value='"+data[i].rno+"' class='w-btn w-btn-blue' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>삭제</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
+	+") <button value='"+data[i].rno+"' id='modButton'class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button> <button id ='delButton' value='"+data[i].rno+"' class='w-btn w-btn-blue' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>삭제</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
 			
 			
 // 			htmlString +="<b>"+(i+1)+"."+data[i].replyer+"</b> -"+"("+data[i].updatedate+")"+ 
@@ -137,20 +143,39 @@ $(document).ready(function(){
 		
 	});
 	
+	
+	var modifyrno;
+	var Mreplyer;
+	var Mreply;
+	var reply;
+	var replyer;
 	$(".table-responsive").on("click","#modButton",function(){//수정하려고
 		var modifyrno=$(this).val();
 		console.log("수정 rno 잘 가져왓나~~",modifyrno);
 		var reply;
-		replyService.get("여기 수정",rno,function(data){
-			console.log(rno,data);
+		var replyer;
+		replyService.get(modifyrno,function(data){
+			console.log(modifyrno,"갖고온 데이터",data);//data에 모든 정보를 갖고옴
 			reply = data.reply;
-		
+			replyer = data.replyer;
+			console.log(reply,"갖고 온 댓글");
+			console.log(replyer,"갖고 온 작성자");
 			
-			//입력창에 수정 내용 올리기
-			reply = $("#replyData").val(reply)
+			//입력창에 수정할 댓글 내용,작성자 불러오기
+			Mreplyer= $("#replyerdata").val(replyer);
+			Mreply= $("#replydata").val(reply);		
+			$(reply).focus(); //수정누르면 커서가 댓글창에
+			console.log(reply,"2갖고 온 댓글");
+			console.log(replyer,"2갖고 온 작성자");
+		//	replyService.modify({rno:modifyrno, reply:Mreply, replyer:Mreplyer},function(data{
+				
+		//	}))
+			//replyService.modify({rno:modifyrno, reply:Mreply, replyer:Mreplyer}, function(data){
+			//	alert(rno+"번 리플 수정했지요");
+			//	show();
+	//		});
 			
-		})
-		console.log("수정 rno 잘 가져왓나~~",modifyrno);
+	//	}) 
 		
 		
 		

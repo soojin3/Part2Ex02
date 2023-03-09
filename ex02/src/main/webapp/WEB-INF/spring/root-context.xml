@@ -3,13 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- 히카리 CP 초기화 -->
 	<!-- id는 객체 이름 class는 class-->
-	<bean  id="bbb" class="com.zaxxer.hikari.HikariConfig">
+	<bean  id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 
 	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 	<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
@@ -18,14 +22,22 @@
 	
 	</bean>
 	<!-- HikariDataSource 는 DataSource 인터페이스를 구현한 클래스이다. -->
-	<bean id="aaa" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-	<constructor-arg ref="bbb"/>
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+	<constructor-arg ref="hikariConfig"/>
 	</bean>
 	
-	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="aaa"/>
-	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"/>
 	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<property name="dataSource" ref="dataSource"></property>
+
+	</bean>
+	
+	<tx:annotation-driven />
+	
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
 	<!-- 마이바티스 인식하려면 Namespaces에서 마이바티스 체크 -->
 	 <mybatis-spring:scan base-package="org.zerock.mapper"/>

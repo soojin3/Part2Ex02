@@ -19,4 +19,8 @@ public interface ReplyService {
 	
 	//글에 해당하는 리플목록 가져오기
 	List<ReplyVO> getList(Long bno);
+	
+	//트랜잭션 테스트용
+	void txTest();
+	
 }
