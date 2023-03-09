@@ -63,7 +63,7 @@ var replyService=(function(){
 			}
 		});
 	}
-	
+	//{rno:34,replyer:"수진",reply:"이건내용"}
 	//리플 수정하기
 	//필요한건 리플 정보
 	function modify(reply,callback,error){  
