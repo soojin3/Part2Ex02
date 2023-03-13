@@ -89,7 +89,7 @@ $(document).ready(function(){
 			htmlString+="<b>"+(i+1)+". "+data[i].replyer+"</b>  "+"("+
 			replyService.time('<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${board.regdate}"/>'
 		,data[i].updatedate)
-	+") <button id='modButton'class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button> <button id ='delButton' value='"+data[i].rno+"' class='w-btn w-btn-blue' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>삭제</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
+	+") <button value='"+data[i].rno+"' id='modButton'class='w-btn w-btn-pink' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>수정</button> <button id ='delButton' value='"+data[i].rno+"' class='w-btn w-btn-blue' style='font-size: 13px;  padding-top: 9px; padding-bottom: 8px; padding-left: 9px;padding-right: 9px;'>삭제</button><br>"+"&nbsp"+data[i].reply+"<hr>" 
 			
 			
 // 			htmlString +="<b>"+(i+1)+"."+data[i].replyer+"</b> -"+"("+data[i].updatedate+")"+ 
@@ -128,7 +128,7 @@ $(document).ready(function(){
 	
 	$(".table-responsive").on("click","#delButton",function(){//
 		var removerno=$(this).val();
-		console.log("리무브 rno 잘 가져왓나~~",removerno);
+		console.log("리무브 rno : ",removerno);
 		replyService.remove(removerno,function(){
 		alert(removerno+"번 댓글 삭제완료 되었습니다.");
 		console.log(removerno,"번 삭제 완료");
@@ -137,27 +137,32 @@ $(document).ready(function(){
 		
 	});
 	
+	var Mreply;
+	var Mreplyer;
 	$(".table-responsive").on("click","#modButton",function(){//수정하려고
 		var modifyrno=$(this).val();
-		console.log("수정 rno 잘 가져왓나~~",modifyrno);
+		console.log("수정 rno : ",modifyrno);
 		var reply;
-		replyService.get("여기 수정",rno,function(data){
-			console.log(rno,data);
+		var replyer;
+		replyService.get("여기 수정",modifyrno,function(data){
+			console.log("수정번호: ",modifyrno);
+			console.log(data);
 			reply = data.reply;
+			replyer = data.replyer;
+			console.log("갖고 온 작성자: ",replyer);
+			console.log("갖고 온 내용: ",reply);
 		
 			
 			//입력창에 수정 내용 올리기
-			reply = $("#replyData").val(reply)
+			Modreply = $("#replydata").val(reply);
+			Modreplyer = $("#replyerdata").val(replyer);
 			
-		})
-		console.log("수정 rno 잘 가져왓나~~",modifyrno);
-		
-		
+		});
+		//console.log("수정 rno 잘 가져왓나~~",modifyrno);
 		
 		
 // 		replyService.modify({rno:34,replyer:"수진",reply:"이건내용"}.modifyrno,function(){
 			
-		
 // 			show();			
 // 		});			
 		
