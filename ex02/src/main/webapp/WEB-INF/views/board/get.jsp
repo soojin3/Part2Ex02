@@ -137,21 +137,21 @@ $(document).ready(function(){
 		
 	});
 	
-	var Mreply;
-	var Mreplyer;
+	var Modreply;
+	var Modreplyer;
 	$(".table-responsive").on("click","#modButton",function(){//수정하려고
 		var modifyrno=$(this).val();
 		console.log("수정 rno : ",modifyrno);
 		var reply;
 		var replyer;
-		replyService.get("여기 수정",modifyrno,function(data){
-			console.log("수정번호: ",modifyrno);
-			console.log(data);
+		replyService.get(modifyrno,function(data){//data에 모든 정보를 갖고옴
+			//console.log("수정번호: ",modifyrno,data);
+			//console.log(data);
 			reply = data.reply;
 			replyer = data.replyer;
 			console.log("갖고 온 작성자: ",replyer);
 			console.log("갖고 온 내용: ",reply);
-		
+			
 			
 			//입력창에 수정 내용 올리기
 			Modreply = $("#replydata").val(reply);
