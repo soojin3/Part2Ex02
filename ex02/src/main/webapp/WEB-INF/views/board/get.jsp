@@ -60,6 +60,10 @@
 					<button class="w-btn w-btn-pink" id="replyInsert"
 						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>댓글
 						등록</button>
+					<button class="w-btn w-btn-pink" id="modifyreply"
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정</button>
+					<button class="w-btn w-btn-pink" id="modifycancle"
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>cancle</button>
 				</div>
 			</div>
 		</div>
@@ -156,6 +160,7 @@ $(document).ready(function(){
 			//입력창에 수정 내용 올리기
 			Modreply = $("#replydata").val(reply);
 			Modreplyer = $("#replyerdata").val(replyer);
+			//$("#midifyreply").show("fast");
 			
 		});
 		//console.log("수정 rno 잘 가져왓나~~",modifyrno);
