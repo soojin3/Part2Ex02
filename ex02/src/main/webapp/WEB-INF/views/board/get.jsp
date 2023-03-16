@@ -57,13 +57,13 @@
 						type="text" placeholder="작성자" style="width: 100px; height: 23px;"><br>
 					댓글 내용: <input id="replydata" type="text" placeholder="댓글을 입력해 주세요"
 						style="width: 500px; height: 50px;"><br>
+					<button class="w-btn w-btn-blue" id="modifyreply"
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정 확인</button>
+					<button class="w-btn w-btn-pink" id="modifycancle"
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정 취소</button><br>
 					<button class="w-btn w-btn-pink" id="replyInsert"
 						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>댓글
 						등록</button>
-					<button class="w-btn w-btn-pink" id="modifyreply"
-						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정</button>
-					<button class="w-btn w-btn-pink" id="modifycancle"
-						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>cancle</button>
 				</div>
 			</div>
 		</div>
@@ -106,6 +106,7 @@ $(document).ready(function(){
 		console.log("리플 만들어줘 ",htmlString)
 		$("#reply").html(htmlString);
 	});
+	
 	}
 	
 	//리플 작성버튼을 클릭했을때 수행하는 작업(1. 댓글 등록 2. 댓글 목록 가져오기)
@@ -143,7 +144,12 @@ $(document).ready(function(){
 	
 	var Modreply;
 	var Modreplyer;
+	$("#modifyreply").hide();
+	$("#modifycancle").hide();
 	$(".table-responsive").on("click","#modButton",function(){//수정하려고
+		$("#modifyreply").show();
+		$("#modifycancle").show();
+		//var bnodata=${board.bno};
 		var modifyrno=$(this).val();
 		console.log("수정 rno : ",modifyrno);
 		var reply;
@@ -155,12 +161,22 @@ $(document).ready(function(){
 			replyer = data.replyer;
 			console.log("갖고 온 작성자: ",replyer);
 			console.log("갖고 온 내용: ",reply);
-			
+			//${board.regdate}
 			
 			//입력창에 수정 내용 올리기
 			Modreply = $("#replydata").val(reply);
 			Modreplyer = $("#replyerdata").val(replyer);
-			//$("#midifyreply").show("fast");
+			
+			//"댓글 수정 확인" modifyreply
+			$("#modifyreply").on("click",function(){
+				console.log("!!댓글 수정 확인 버튼 누름");
+				var Modifyreply = $("reply").val();
+				var Modifyreplyer = $("replyer").val();
+				console.log("수정하는 댓글: ",Modifyreply,Modifyrepler);
+				
+				
+				show();
+			});
 			
 		});
 		//console.log("수정 rno 잘 가져왓나~~",modifyrno);
@@ -175,6 +191,17 @@ $(document).ready(function(){
 	
 	
 });
+	
+	//"댓글 수정 확인" modifyreply
+/* 	$("#modifyreply").on("click",function(){
+		console.log("!!댓글 수정 확인 버튼 누름");
+		var Modifyreply = $("reply").val();
+		var Modifyreplyer = $("replyer").val();
+		console.log("수정하는 댓글: ",Modifyreply,Modifyrepler);
+		
+	}); */
+	
+	
 // 	$("#replyInsert").on("click",function(){
 // 		//수행할 내용 적기
 // 		console.log("리플작성버튼 클릭");
