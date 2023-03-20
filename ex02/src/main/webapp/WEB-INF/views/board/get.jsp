@@ -167,6 +167,13 @@ $(document).ready(function(){
 			Modreply = $("#replydata").val(reply);
 			Modreplyer = $("#replyerdata").val(replyer);
 			
+			//수정 취소 버튼 누름
+			$("#modifycancle").on("click",function(){
+				console.log("!!댓글 수정 취소 버튼 누름");
+				$("#replydata").val("");
+				$("#replyerdata").val("");
+			});
+			
 			//"댓글 수정 확인" modifyreply
 			$("#modifyreply").on("click",function(){
 				console.log("!!댓글 수정 확인 버튼 누름");
