@@ -149,6 +149,7 @@ $(document).ready(function(){
 	$(".table-responsive").on("click","#modButton",function(){//수정하려고
 		$("#modifyreply").show();
 		$("#modifycancle").show();
+		$("#replyInsert").hide();
 		//var bnodata=${board.bno};
 		var modifyrno=$(this).val();
 		console.log("수정 rno : ",modifyrno);
@@ -172,17 +173,29 @@ $(document).ready(function(){
 				console.log("!!댓글 수정 취소 버튼 누름");
 				$("#replydata").val("");
 				$("#replyerdata").val("");
+				$("#modifyreply").hide();
+				$("#modifycancle").hide();
+				$("#replyInsert").show();
 			});
 			
 			//"댓글 수정 확인" modifyreply
 			$("#modifyreply").on("click",function(){
 				console.log("!!댓글 수정 확인 버튼 누름");
-				var Modifyreply = $("reply").val();
-				var Modifyreplyer = $("replyer").val();
-				console.log("수정하는 댓글: ",Modifyreply,Modifyrepler);
+				var Modifyreply = $("#replydata").val();
+				var Modifyreplyer = $("#replyerdata").val();
+				console.log("수정번호 잘 뜨나~~",modifyrno);
+				console.log("수정하는 댓글: ",Modifyreply,Modifyreplyer);
+				replyService.modify({rno:modifyrno ,reply:Modifyreply,replyer:Modifyreplyer},function(data){
 				
+					$("#modifyreply").hide();
+					$("#modifycancle").hide();
+					$("#replyInsert").show();
+					show();	
+					$("#replydata").val("");
+					$("#replyerdata").val("");
+					
+				});
 				
-				show();
 			});
 			
 		});
@@ -248,7 +261,7 @@ $(document).ready(function(){
 // 	alert("가져오기 성공")
 // 	console.log("1번 댓글",data)
 // })
-// replyService.modify({rno:46,reply:"4교시",replyer:"2나그네"},function(data){
+// replyService.modify({rno:124,reply:"4교시",replyer:"2나그네"},function(data){
 // 	alert("46번 수정함~",data)
 // })
 /* replyService.remove(45,function(data){
