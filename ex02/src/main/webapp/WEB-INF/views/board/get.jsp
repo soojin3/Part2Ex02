@@ -44,23 +44,24 @@
 						class="w-btn w-btn-blue"> 목록으로 돌아가기 </a> <a
 						href="/board/modify?bno=${board.bno }&pageNum=${cri.pageNum}&amount=${cri.amount}"
 						class="w-btn w-btn-blue"> 수정 </a>
-						<button class="btn btn-primary">테스트</button>
+					<button class="btn btn-primary">테스트</button>
 				</form>
 			</div>
 			<div>
 				<br>
 				<div class="table-responsive">
 
-					<span id="reply"></span> <br> 
-					
-					작성자: <input id="replyerdata"
+					<span id="reply"></span> <br> 작성자: <input id="replyerdata"
 						type="text" placeholder="작성자" style="width: 100px; height: 23px;"><br>
 					댓글 내용: <input id="replydata" type="text" placeholder="댓글을 입력해 주세요"
 						style="width: 500px; height: 50px;"><br>
 					<button class="w-btn w-btn-blue" id="modifyreply"
-						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정 확인</button>
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정
+						확인</button>
 					<button class="w-btn w-btn-pink" id="modifycancle"
-						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정 취소</button><br>
+						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>수정
+						취소</button>
+					<br>
 					<button class="w-btn w-btn-pink" id="replyInsert"
 						style='font-size: 13px; padding-top: 9px; padding-bottom: 8px; padding-left: 9px; padding-right: 9px;'>댓글
 						등록</button>
@@ -106,8 +107,8 @@ $(document).ready(function(){
 		console.log("리플 만들어줘 ",htmlString)
 		$("#reply").html(htmlString);
 	});
-	
 	}
+	
 	
 	//리플 작성버튼을 클릭했을때 수행하는 작업(1. 댓글 등록 2. 댓글 목록 가져오기)
 	$("#replyInsert").on("click",function(){    
@@ -142,6 +143,17 @@ $(document).ready(function(){
 		
 	});
 	
+	//수정 버튼 각각 기능으로 나누기
+	//수정 취소 버튼 누름
+	$("#modifycancle").on("click",function(){
+			console.log("!!댓글 수정 취소 버튼 누름");
+			$("#replydata").val("");
+			$("#replyerdata").val("");
+			$("#modifyreply").hide();
+			$("#modifycancle").hide();
+			$("#replyInsert").show();
+		});
+	
 	var Modreply;
 	var Modreplyer;
 	$("#modifyreply").hide();
@@ -162,21 +174,10 @@ $(document).ready(function(){
 			replyer = data.replyer;
 			console.log("갖고 온 작성자: ",replyer);
 			console.log("갖고 온 내용: ",reply);
-			//${board.regdate}
-			
+				
 			//입력창에 수정 내용 올리기
 			Modreply = $("#replydata").val(reply);
 			Modreplyer = $("#replyerdata").val(replyer);
-			
-			//수정 취소 버튼 누름
-			$("#modifycancle").on("click",function(){
-				console.log("!!댓글 수정 취소 버튼 누름");
-				$("#replydata").val("");
-				$("#replyerdata").val("");
-				$("#modifyreply").hide();
-				$("#modifycancle").hide();
-				$("#replyInsert").show();
-			});
 			
 			//"댓글 수정 확인" modifyreply
 			$("#modifyreply").on("click",function(){
